@@ -16,8 +16,8 @@ export class MobileMenuComponent {
   navLinks = [
     { label: 'Inicio', route: '/' },
     { label: 'Servicios', route: '/servicios' },
-    { label: 'Nuestra manada', route: '/manada' },
-    { label: 'Preguntas frecuentes', route: '/faq' },
+    { label: 'Nuestra manada', route: '/nuestra-manada' },
+    { label: 'Preguntas frecuentes', route: '/preguntas-frecuentes' },
     { label: 'Contacto', route: '/contacto' }
   ];
 

@@ -39,7 +39,7 @@
         </button>
       </nav>
 
-      <div class="booking-page__content">
+      <div class="booking-page__content" #stepContent>
         <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 1">
           <app-pet-step
             [selectedPetId]="selectedPet()?.id || ''"

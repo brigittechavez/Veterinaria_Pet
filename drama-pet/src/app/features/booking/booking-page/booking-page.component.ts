@@ -1,5 +1,5 @@
-import { Component, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, computed, ElementRef, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Pet, PetService } from '../services/pet.service';
 import { Service, SERVICES } from '../../../data/services.data';
@@ -32,6 +32,8 @@ import { BookingSuccessComponent } from '../booking-success/booking-success.comp
   styleUrls: ['./booking-page.component.scss']
 })
 export class BookingPageComponent {
+  @ViewChild('stepContent') stepContent?: ElementRef<HTMLElement>;
+
   currentStep = signal(1);
   completedSteps = signal<Set<number>>(new Set());
   isBookingConfirmed = signal(false);
@@ -76,7 +78,20 @@ export class BookingPageComponent {
     }
   });
 
-  constructor(private petService: PetService) {}
+  constructor(
+    private petService: PetService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  private scrollToTop(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const el = this.stepContent?.nativeElement;
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
 
   goToStep(step: number): void {
     if (step <= this.maxStep() + 1 && step >= 1) {
@@ -84,6 +99,7 @@ export class BookingPageComponent {
       setTimeout(() => {
         this.currentStep.set(step);
         this.isTransitioning.set(false);
+        this.scrollToTop();
       }, 150);
     }
   }
@@ -99,6 +115,7 @@ export class BookingPageComponent {
       setTimeout(() => {
         this.currentStep.set(current + 1);
         this.isTransitioning.set(false);
+        this.scrollToTop();
       }, 150);
     }
   }
@@ -110,6 +127,7 @@ export class BookingPageComponent {
       setTimeout(() => {
         this.currentStep.set(current - 1);
         this.isTransitioning.set(false);
+        this.scrollToTop();
       }, 150);
     }
   }
