@@ -50,6 +50,10 @@
     max-width: 800px;
   }
 
+  &__item {
+    animation: faqItemEntrance var(--motion-slow-ease) both;
+  }
+
   &__footer {
     margin-top: 48px;
     padding-top: 32px;
@@ -85,5 +89,16 @@
     &:hover {
       border-color: var(--color-brand-dark);
     }
+  }
+}
+
+@keyframes faqItemEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

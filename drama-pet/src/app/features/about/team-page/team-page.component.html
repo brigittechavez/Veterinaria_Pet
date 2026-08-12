@@ -12,6 +12,8 @@
         <div
           *ngFor="let value of values; let i = index"
           class="team-page__value-card"
+          appReveal
+          [revealDelay]="i * 80"
         >
           <div class="team-page__value-icon">
             <app-icon [name]="value.icon" [size]="28"></app-icon>
@@ -22,7 +24,7 @@
       </div>
     </div>
 
-    <div class="team-page__team">
+    <div class="team-page__team" appReveal>
       <h2 class="team-page__team-title">Nuestro equipo</h2>
       <p class="team-page__team-subtitle">Profesionales que aman lo que hacen.</p>
       <div class="team-page__team-grid">

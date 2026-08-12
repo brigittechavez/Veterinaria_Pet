@@ -21,8 +21,7 @@
 
   &__content {
     opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease forwards;
+    animation: fadeInUp var(--motion-reveal) var(--ease-emphasized) forwards;
   }
 
   &__headline {
@@ -33,6 +32,25 @@
     letter-spacing: -0.02em;
     color: var(--color-foreground);
     margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__line {
+    display: block;
+    overflow: hidden;
+
+    &--1 {
+      opacity: 0;
+      transform: translateY(100%);
+      animation: lineReveal var(--motion-slow) var(--ease-emphasized) 0.1s forwards;
+    }
+
+    &--2 {
+      opacity: 0;
+      transform: translateY(100%);
+      animation: lineReveal var(--motion-slow) var(--ease-emphasized) 0.3s forwards;
+    }
   }
 
   &__description {
@@ -42,12 +60,16 @@
     color: var(--color-muted);
     margin: 0 0 40px;
     max-width: 480px;
+    opacity: 0;
+    animation: fadeInUp var(--motion-reveal) var(--ease-emphasized) 0.5s forwards;
   }
 
   &__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    opacity: 0;
+    animation: fadeInUp var(--motion-reveal) var(--ease-emphasized) 0.65s forwards;
   }
 
   &__visual {
@@ -57,8 +79,8 @@
     max-width: 500px;
     margin: 0 auto;
     opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease 0.2s forwards;
+    animation: scaleIn var(--motion-reveal) var(--ease-emphasized) 0.2s forwards;
+    will-change: transform;
   }
 
   &__circle {
@@ -69,6 +91,7 @@
     left: 5%;
     background-color: var(--color-brand);
     border-radius: 50%;
+    will-change: transform;
   }
 
   &__pet-image {
@@ -80,10 +103,15 @@
     object-fit: cover;
     border-radius: 50%;
     z-index: 1;
+    will-change: transform;
   }
 }
 
-@keyframes fadeInUp {
+@keyframes lineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
   to {
     opacity: 1;
     transform: translateY(0);

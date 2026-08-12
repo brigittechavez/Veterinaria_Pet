@@ -35,6 +35,8 @@ export class BookingPageComponent {
   currentStep = signal(1);
   completedSteps = signal<Set<number>>(new Set());
   isBookingConfirmed = signal(false);
+  isTransitioning = signal(false);
+  isLoading = signal(false);
 
   selectedPet = signal<Pet | null>(null);
   selectedService = signal<Service | null>(null);
@@ -78,7 +80,11 @@ export class BookingPageComponent {
 
   goToStep(step: number): void {
     if (step <= this.maxStep() + 1 && step >= 1) {
-      this.currentStep.set(step);
+      this.isTransitioning.set(true);
+      setTimeout(() => {
+        this.currentStep.set(step);
+        this.isTransitioning.set(false);
+      }, 150);
     }
   }
 
@@ -89,14 +95,22 @@ export class BookingPageComponent {
     this.completedSteps.set(completed);
 
     if (current < 6) {
-      this.currentStep.set(current + 1);
+      this.isTransitioning.set(true);
+      setTimeout(() => {
+        this.currentStep.set(current + 1);
+        this.isTransitioning.set(false);
+      }, 150);
     }
   }
 
   prevStep(): void {
     const current = this.currentStep();
     if (current > 1) {
-      this.currentStep.set(current - 1);
+      this.isTransitioning.set(true);
+      setTimeout(() => {
+        this.currentStep.set(current - 1);
+        this.isTransitioning.set(false);
+      }, 150);
     }
   }
 
@@ -131,7 +145,11 @@ export class BookingPageComponent {
 
   onConfirmBooking(data: { nombre: string; email: string; telefono: string }): void {
     this.ownerData.set(data);
-    this.isBookingConfirmed.set(true);
+    this.isLoading.set(true);
+    setTimeout(() => {
+      this.isLoading.set(false);
+      this.isBookingConfirmed.set(true);
+    }, 1200);
   }
 
   getStepLabel(step: number): string {

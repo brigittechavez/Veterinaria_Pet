@@ -4,11 +4,18 @@ import { RouterModule } from '@angular/router';
 import { FAQ_CATEGORIES, FaqItem } from '../../../data/faq.data';
 import { SectionHeadingComponent } from '../../../shared/section-heading/section-heading.component';
 import { AccordionComponent } from '../accordion/accordion.component';
+import { RevealDirective } from '../../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-faq-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, SectionHeadingComponent, AccordionComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SectionHeadingComponent,
+    AccordionComponent,
+    RevealDirective
+  ],
   templateUrl: './faq-page.component.html',
   styleUrls: ['./faq-page.component.scss']
 })

@@ -24,9 +24,20 @@
   --shadow-soft: 0 2px 16px rgba(0, 0, 0, 0.06);
   --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.1);
 
-  --motion-fast: 150ms ease;
-  --motion-default: 300ms ease;
-  --motion-slow: 500ms ease;
+  --motion-instant: 120ms;
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 420ms;
+  --motion-reveal: 600ms;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --motion-fast-ease: var(--motion-fast) var(--ease-standard);
+  --motion-base-ease: var(--motion-base) var(--ease-standard);
+  --motion-slow-ease: var(--motion-slow) var(--ease-standard);
+  --motion-default: var(--motion-base) var(--ease-standard);
 
   --container-max: 1280px;
   --container-padding: 24px;
@@ -64,6 +75,31 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes drawCheck {
+  from { stroke-dashoffset: 24; }
+  to { stroke-dashoffset: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -187,5 +187,14 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
+
+    &:not(:disabled) {
+      animation: confirmPulse 2s var(--ease-standard) infinite;
+    }
   }
+}
+
+@keyframes confirmPulse {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.12); }
 }

@@ -5,10 +5,15 @@
   right: 0;
   z-index: 100;
   background-color: var(--color-background, #F5F1E8);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color var(--motion-base-ease), box-shadow var(--motion-base-ease), padding var(--motion-base-ease);
 
   &.scrolled {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+
+    .navbar__container {
+      padding-top: 0.625rem;
+      padding-bottom: 0.625rem;
+    }
   }
 
   &__container {
@@ -18,6 +23,7 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 1rem 2rem;
+    transition: padding var(--motion-base-ease);
   }
 
   &__logo {
@@ -50,7 +56,7 @@
     font-family: var(--font-ui, 'Inter'), sans-serif;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: color var(--motion-fast-ease);
     position: relative;
 
     &::after {
@@ -61,7 +67,7 @@
       width: 0;
       height: 2px;
       background-color: var(--color-brand, #C7FF3D);
-      transition: width 0.2s ease;
+      transition: width var(--motion-fast-ease);
     }
 
     &:hover {
@@ -83,7 +89,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 8px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color var(--motion-fast-ease), transform var(--motion-fast-ease);
 
     @media (min-width: 1024px) {
       display: block;
@@ -93,12 +99,18 @@
       background-color: #000000;
       transform: translateY(-1px);
     }
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
 
   &__hamburger {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 5px;
     width: 44px;
     height: 44px;
     padding: 0;
@@ -106,7 +118,7 @@
     border: none;
     cursor: pointer;
     color: var(--color-foreground, #111111);
-    transition: color 0.2s ease;
+    transition: color var(--motion-fast-ease);
 
     @media (min-width: 1024px) {
       display: none;
@@ -114,6 +126,30 @@
 
     &:hover {
       color: var(--color-brand-dark, #a8d633);
+    }
+  }
+
+  &__hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform var(--motion-base-ease), opacity var(--motion-fast-ease);
+    transform-origin: center;
+  }
+
+  &__hamburger--open {
+    .navbar__hamburger-line {
+      &:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
     }
   }
 }

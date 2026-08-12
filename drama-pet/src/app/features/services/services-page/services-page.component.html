@@ -1,4 +1,4 @@
-﻿<section class="services-page">
+﻿  <section class="services-page" appReveal>
   <div class="services-page__container container">
     <app-section-heading
       title="Nuestros servicios"
@@ -8,10 +8,11 @@
     <div class="services-page__content">
       <div class="services-page__list">
         <button
-          *ngFor="let service of services"
+          *ngFor="let service of services; let i = index"
           class="services-page__item"
           [class.services-page__item--active]="service.id === selectedServiceId()"
           [class.services-page__item--emergency]="service.id === 'emergencias'"
+          [style.animation-delay]="i * 50 + 'ms'"
           (click)="selectService(service.id)"
         >
           <div class="services-page__item-icon">
@@ -39,7 +40,7 @@
             >
           </div>
 
-          <div class="services-page__detail-content">
+          <div class="services-page__detail-content" [class.services-page__detail-content--entering]="isTransitioning()">
             <h3 class="services-page__detail-name">{{ selectedService().name }}</h3>
 
             <div class="services-page__detail-meta">

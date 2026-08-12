@@ -12,7 +12,7 @@
     border: none;
     cursor: pointer;
     text-align: left;
-    transition: background-color var(--motion-fast);
+    transition: background-color var(--motion-fast-ease);
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.02);
@@ -32,6 +32,7 @@
     color: var(--color-foreground);
     line-height: 1.4;
     flex: 1;
+    transition: color var(--motion-fast);
   }
 
   &__chevron {
@@ -44,13 +45,13 @@
     border-radius: 50%;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    transition: transform var(--motion-default), background-color var(--motion-fast);
+    transition: transform var(--motion-base-ease), background-color var(--motion-fast-ease), color var(--motion-fast);
   }
 
   &__content {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows var(--motion-default);
+    transition: grid-template-rows var(--motion-base-ease);
     overflow: hidden;
 
     &--open {
@@ -72,6 +73,8 @@
   }
 
   &--open {
+    background-color: rgba(199, 255, 61, 0.03);
+
     .accordion__chevron {
       transform: rotate(180deg);
       background-color: var(--color-brand);

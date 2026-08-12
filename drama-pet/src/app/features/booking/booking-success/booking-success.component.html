@@ -3,48 +3,49 @@
     <div class="booking-success__circle booking-success__circle--1"></div>
     <div class="booking-success__circle booking-success__circle--2"></div>
     <div class="booking-success__circle booking-success__circle--3"></div>
+    <div class="booking-success__circle booking-success__circle--4"></div>
   </div>
 
   <div class="booking-success__content">
     <div class="booking-success__icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
+      <svg class="booking-success__check-svg" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path class="booking-success__check-circle" d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+        <polyline class="booking-success__check-mark" points="22 4 12 14.01 9 11.01"/>
       </svg>
     </div>
 
     <h1 class="booking-success__headline">Drama resuelto.<br/>Cita reservada.</h1>
 
     <p class="booking-success__message">
-      Tu cita ha sido registrada exitosamente. Recibirás un correo de confirmación con los detalles.
+      Tu cita ha sido registrada exitosamente. Recibiras un correo de confirmacion con los detalles.
     </p>
 
     <div class="booking-success__summary">
-      <div class="booking-success__summary-row" *ngIf="pet">
+      <div class="booking-success__summary-row booking-success__summary-row--1" *ngIf="pet">
         <span class="booking-success__summary-label">Mascota</span>
         <span class="booking-success__summary-value">{{ pet.nombre }}</span>
       </div>
-      <div class="booking-success__summary-row" *ngIf="service">
+      <div class="booking-success__summary-row booking-success__summary-row--2" *ngIf="service">
         <span class="booking-success__summary-label">Servicio</span>
         <span class="booking-success__summary-value">{{ service.name }}</span>
       </div>
-      <div class="booking-success__summary-row" *ngIf="vet">
+      <div class="booking-success__summary-row booking-success__summary-row--3" *ngIf="vet">
         <span class="booking-success__summary-label">Veterinario</span>
         <span class="booking-success__summary-value">{{ vet.name }}</span>
       </div>
-      <div class="booking-success__summary-row" *ngIf="selectedDate">
+      <div class="booking-success__summary-row booking-success__summary-row--4" *ngIf="selectedDate">
         <span class="booking-success__summary-label">Fecha</span>
         <span class="booking-success__summary-value">{{ formatDate(selectedDate) }}</span>
       </div>
-      <div class="booking-success__summary-row" *ngIf="selectedTime">
+      <div class="booking-success__summary-row booking-success__summary-row--5" *ngIf="selectedTime">
         <span class="booking-success__summary-label">Hora</span>
         <span class="booking-success__summary-value">{{ selectedTime }}</span>
       </div>
-      <div class="booking-success__summary-row" *ngIf="ownerData">
+      <div class="booking-success__summary-row booking-success__summary-row--6" *ngIf="ownerData">
         <span class="booking-success__summary-label">Responsable</span>
         <span class="booking-success__summary-value">{{ ownerData.nombre }}</span>
       </div>
-      <div class="booking-success__summary-row" *ngIf="ownerData">
+      <div class="booking-success__summary-row booking-success__summary-row--7" *ngIf="ownerData">
         <span class="booking-success__summary-label">Contacto</span>
         <span class="booking-success__summary-value">{{ ownerData.telefono }}</span>
       </div>

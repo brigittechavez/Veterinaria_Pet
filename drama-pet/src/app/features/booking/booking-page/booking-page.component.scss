@@ -1,9 +1,36 @@
 .booking-page {
   min-height: 100vh;
   padding: 24px 0 120px;
+  position: relative;
 
   @media (min-width: 960px) {
     padding: 40px 0 60px;
+  }
+
+  &__loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(245, 241, 232, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: fadeIn 0.2s ease;
+  }
+
+  &__loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__loader-circle {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-brand);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
   }
 
   &__container {
@@ -117,6 +144,7 @@
     font-weight: 700;
     color: var(--color-foreground);
     flex-shrink: 0;
+    transition: background-color var(--motion-base), transform var(--motion-fast);
   }
 
   &__step--active &__step-number {
@@ -127,6 +155,7 @@
   &__step--completed &__step-number {
     background-color: var(--color-brand-dark);
     color: var(--color-foreground);
+    animation: stepPulse 0.4s var(--ease-standard);
   }
 
   &__step-label {
@@ -148,7 +177,13 @@
   }
 
   &__step-content {
-    animation: fadeIn 0.3s ease;
+    animation: stepSlideIn var(--motion-base) var(--ease-standard) forwards;
+
+    &--exiting {
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.15s var(--ease-exit), transform 0.15s var(--ease-exit);
+    }
   }
 
   &__navigation {
@@ -207,12 +242,27 @@
 }
 
 @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes stepSlideIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateX(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
+}
+
+@keyframes stepPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }

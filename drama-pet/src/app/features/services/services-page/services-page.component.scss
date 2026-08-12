@@ -37,13 +37,24 @@
     border: 2px solid transparent;
     border-radius: var(--radius-card);
     cursor: pointer;
-    transition: all var(--motion-default);
+    transition: all var(--motion-fast-ease);
     text-align: left;
     width: 100%;
     overflow: hidden;
+    animation: serviceItemEntrance var(--motion-slow-ease) both;
 
     &:hover {
       background-color: var(--color-surface);
+      transform: scale(1.01);
+
+      .services-page__item-icon {
+        background-color: var(--color-brand-dark);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-brand);
+      outline-offset: 4px;
     }
 
     &--active {
@@ -148,6 +159,12 @@
     flex-direction: column;
     gap: 20px;
     flex: 1;
+    transition: opacity var(--motion-fast), transform var(--motion-fast);
+
+    &--entering {
+      opacity: 0;
+      transform: translateY(6px);
+    }
 
     @media (min-width: 768px) {
       padding: 44px 40px;
@@ -287,7 +304,7 @@
     font-size: 0.9375rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all var(--motion-default);
+    transition: all var(--motion-fast-ease);
     cursor: pointer;
     border: 2px solid transparent;
 
@@ -331,5 +348,16 @@
 
   &__detail-cta {
     margin-top: 8px;
+  }
+}
+
+@keyframes serviceItemEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

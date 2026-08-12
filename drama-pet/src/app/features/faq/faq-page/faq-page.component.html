@@ -1,4 +1,4 @@
-﻿<section class="faq-page">
+﻿  <section class="faq-page" appReveal>
   <div class="faq-page__container container">
     <app-section-heading
       title="Preguntas frecuentes"
@@ -26,13 +26,18 @@
     </div>
 
     <div class="faq-page__list">
-      <app-accordion
-        *ngFor="let item of filteredItems(); trackBy: trackById"
-        [question]="item.question"
-        [answer]="item.answer"
-        [isOpen]="isOpen(item.id)"
-        (toggle)="toggleItem(item.id)"
-      ></app-accordion>
+      <div
+        *ngFor="let item of filteredItems(); let i = index; trackBy: trackById"
+        class="faq-page__item"
+        [style.animation-delay]="i * 60 + 'ms'"
+      >
+        <app-accordion
+          [question]="item.question"
+          [answer]="item.answer"
+          [isOpen]="isOpen(item.id)"
+          (toggle)="toggleItem(item.id)"
+        ></app-accordion>
+      </div>
     </div>
 
     <div class="faq-page__footer">

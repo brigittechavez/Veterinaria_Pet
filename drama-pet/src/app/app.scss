@@ -7,3 +7,13 @@
   min-height: 100vh;
   padding-top: 80px;
 }
+
+.route-outlet {
+  opacity: 0;
+  animation: routeFadeIn var(--motion-base) var(--ease-standard) forwards;
+}
+
+@keyframes routeFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

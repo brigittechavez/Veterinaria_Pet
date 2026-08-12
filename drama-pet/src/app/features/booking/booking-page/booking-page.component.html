@@ -1,4 +1,10 @@
 ﻿<div class="booking-page" *ngIf="!isBookingConfirmed()">
+  <div class="booking-page__loading-overlay" *ngIf="isLoading()">
+    <div class="booking-page__loader">
+      <div class="booking-page__loader-circle"></div>
+    </div>
+  </div>
+
   <div class="booking-page__container">
     <div class="booking-page__main">
       <header class="booking-page__header">
@@ -34,21 +40,21 @@
       </nav>
 
       <div class="booking-page__content">
-        <div class="booking-page__step-content" *ngIf="currentStep() === 1">
+        <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 1">
           <app-pet-step
             [selectedPetId]="selectedPet()?.id || ''"
             (petSelected)="onPetSelected($event)"
           ></app-pet-step>
         </div>
 
-        <div class="booking-page__step-content" *ngIf="currentStep() === 2">
+        <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 2">
           <app-service-step
             [selectedServiceId]="selectedService()?.id || ''"
             (serviceSelected)="onServiceSelected($event)"
           ></app-service-step>
         </div>
 
-        <div class="booking-page__step-content" *ngIf="currentStep() === 3">
+        <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 3">
           <app-questions-step
             [selectedService]="selectedService()"
             [questionsAnswers]="questionsAnswers()"
@@ -56,14 +62,14 @@
           ></app-questions-step>
         </div>
 
-        <div class="booking-page__step-content" *ngIf="currentStep() === 4">
+        <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 4">
           <app-vet-step
             [selectedVetId]="selectedVet()?.id || ''"
             (vetSelected)="onVetSelected($event)"
           ></app-vet-step>
         </div>
 
-        <div class="booking-page__step-content" *ngIf="currentStep() === 5">
+        <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 5">
           <app-date-step
             [selectedDate]="selectedDate()"
             [selectedTime]="selectedTime()"
@@ -72,7 +78,7 @@
           ></app-date-step>
         </div>
 
-        <div class="booking-page__step-content" *ngIf="currentStep() === 6">
+        <div class="booking-page__step-content" [class.booking-page__step-content--exiting]="isTransitioning()" *ngIf="currentStep() === 6">
           <app-review-step
             [pet]="selectedPet()"
             [service]="selectedService()"

@@ -1,32 +1,84 @@
-<section class="testimonials">
+  <section class="testimonials" appReveal>
   <div class="testimonials__container container">
     <app-section-heading
       title="Testimonios"
       subtitle="Lo que dicen los humanos de nuestros pacientes."
     ></app-section-heading>
 
-    <div class="testimonials__grid">
-      <div
-        class="testimonials__card"
-        *ngFor="let testimonial of testimonials; let i = index"
-        [style.--accent]="getAccentColor(i)"
-      >
-        <img
-          class="testimonials__pet-image"
-          [src]="testimonial.image"
-          [alt]="testimonial.petName"
-          width="300"
-          height="300"
-          loading="lazy"
+    <div
+      class="testimonials__carousel"
+      #carouselTrack
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
+    >
+      <div class="testimonials__track">
+        <div
+          class="testimonials__card"
+          *ngFor="let testimonial of testimonials; let i = index"
+          [class.testimonials__card--active]="isActive(i)"
+          [style.--accent]="getAccentColor(i)"
+          [style.animation-delay]="i * 80 + 'ms'"
         >
-        <div class="testimonials__card-header">
-          <span class="testimonials__species">{{ testimonial.species }}</span>
-          <span class="testimonials__drama">Drama: {{ testimonial.dramaLevel }}/10</span>
+          <img
+            class="testimonials__pet-image"
+            [src]="testimonial.image"
+            [alt]="testimonial.petName"
+            width="300"
+            height="300"
+            loading="lazy"
+          >
+          <div class="testimonials__card-header">
+            <span class="testimonials__species">{{ testimonial.species }}</span>
+            <span class="testimonials__drama">Drama: {{ testimonial.dramaLevel }}/10</span>
+          </div>
+          <div class="testimonials__drama-bar">
+            <div
+              class="testimonials__drama-fill"
+              [style.width.%]="isActive(i) ? testimonial.dramaLevel * 10 : 0"
+              [style.background-color]="getAccentColor(i)"
+            ></div>
+          </div>
+          <h3 class="testimonials__pet-name">{{ testimonial.petName }}</h3>
+          <p class="testimonials__quote">"{{ testimonial.comment }}"</p>
+          <span class="testimonials__attribute">{{ testimonial.attribute }}</span>
         </div>
-        <h3 class="testimonials__pet-name">{{ testimonial.petName }}</h3>
-        <p class="testimonials__quote">"{{ testimonial.comment }}"</p>
-        <span class="testimonials__attribute">{{ testimonial.attribute }}</span>
       </div>
+    </div>
+
+    <div class="testimonials__controls">
+      <button
+        class="testimonials__nav-btn"
+        (click)="prev()"
+        aria-label="Anterior"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="testimonials__dots">
+        <button
+          *ngFor="let testimonial of testimonials; let i = index"
+          class="testimonials__dot"
+          [class.testimonials__dot--active]="isActive(i)"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Ir al testimonio ' + (i + 1)"
+          type="button"
+        ></button>
+      </div>
+
+      <button
+        class="testimonials__nav-btn"
+        (click)="next()"
+        aria-label="Siguiente"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
     </div>
   </div>
 </section>

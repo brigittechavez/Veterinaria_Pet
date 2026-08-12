@@ -1,7 +1,9 @@
 <app-navbar></app-navbar>
 
 <main class="main-content">
-  <router-outlet />
+  <div class="route-outlet" [class.route-outlet--visible]="true">
+    <router-outlet />
+  </div>
 </main>
 
 <app-footer></app-footer>

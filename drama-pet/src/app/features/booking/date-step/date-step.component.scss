@@ -56,7 +56,7 @@
     border-radius: 12px;
     background-color: var(--color-surface);
     cursor: pointer;
-    transition: all var(--motion-fast);
+    transition: border-color var(--motion-fast), background-color var(--motion-fast), box-shadow var(--motion-fast), transform var(--motion-fast);
     font-family: inherit;
     text-align: center;
 
@@ -68,6 +68,7 @@
       border-color: var(--color-brand);
       background-color: var(--color-brand);
       box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.15);
+      transform: scale(1.05);
 
       .date-step__day-name,
       .date-step__day-number,
@@ -128,7 +129,7 @@
     font-weight: 500;
     color: var(--color-foreground);
     cursor: pointer;
-    transition: all var(--motion-fast);
+    transition: border-color var(--motion-fast), background-color var(--motion-fast), box-shadow var(--motion-fast), transform var(--motion-fast);
     text-align: center;
 
     &:hover:not(:disabled):not(.date-step__time--unavailable) {
@@ -139,6 +140,7 @@
       border-color: var(--color-brand);
       background-color: var(--color-brand);
       box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.15);
+      transform: scale(1.05);
 
       &:hover {
         border-color: var(--color-brand);

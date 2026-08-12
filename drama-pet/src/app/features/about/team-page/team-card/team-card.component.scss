@@ -5,11 +5,25 @@
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  transition: transform var(--motion-default), box-shadow var(--motion-default);
+  transition: transform var(--motion-base-ease), box-shadow var(--motion-base-ease);
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-medium);
+
+    .team-card__photo-img {
+      transform: scale(1.03);
+    }
+
+    .team-card__fun-fact {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 4px;
   }
 
   &__photo {
@@ -25,6 +39,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    transition: transform var(--motion-base-ease);
   }
 
   &__info {
@@ -68,5 +83,8 @@
     font-style: italic;
     padding-top: 12px;
     border-top: 1px solid var(--color-border);
+    transform: translateY(4px);
+    opacity: 0;
+    transition: transform var(--motion-base-ease), opacity var(--motion-base-ease);
   }
 }
