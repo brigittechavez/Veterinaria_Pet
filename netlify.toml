@@ -1,0 +1,9 @@
+[build]
+  base = "drama-pet"
+  command = "npx ng build --configuration production"
+  publish = "dist/drama-pet/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
