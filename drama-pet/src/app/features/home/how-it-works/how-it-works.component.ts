@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionHeadingComponent } from '../../../shared/section-heading/section-heading.component';
 import { IconComponent } from '../../../shared/icon/icon.component';
@@ -27,7 +27,7 @@ export class HowItWorksComponent {
     {
       number: '03',
       title: 'Nosotros nos encargamos',
-      description: 'Nuestro equipo de profesionales cuidar\u00e1 a tu mascota con amor.',
+      description: 'Nuestro equipo de profesionales cuidará a tu mascota con amor.',
       icon: 'heart'
     }
   ];

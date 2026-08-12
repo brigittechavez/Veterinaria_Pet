@@ -1,4 +1,4 @@
-// ARCHIVO DE DATOS MOCK - Testimonios de Drama Pet
+﻿// ARCHIVO DE DATOS MOCK - Testimonios de Drama Pet
 // Estos son datos ficticios para desarrollo y pruebas.
 // NO representan opiniones reales de clientes.
 
@@ -18,7 +18,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Milo',
     species: 'perro',
     dramaLevel: 9,
-    comment: 'Sobrevivi\u00f3 al ba\u00f1o. Apenas.',
+    comment: 'Sobrevivió al baño. Apenas.',
     attribute: 'Paciente frecuente',
     image: 'assets/images/pets/milo.png'
   },
@@ -27,7 +27,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Luna',
     species: 'gato',
     dramaLevel: 10,
-    comment: 'Grit\u00f3 como si la estuvieran matando por una vacuna. La doctora Valeria la calm\u00f3 en 2 minutos.',
+    comment: 'Gritó como si la estuvieran matando por una vacuna. La doctora Valeria la calmó en 2 minutos.',
     attribute: 'Paciente frecuente',
     image: 'assets/images/pets/luna.png'
   },
@@ -36,7 +36,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Rocco',
     species: 'perro',
     dramaLevel: 7,
-    comment: 'Llor\u00f3 un poco en la consulta pero despu\u00e9s quiso jugar con todo el equipo. Muy profesionales.',
+    comment: 'Lloró un poco en la consulta pero después quiso jugar con todo el equipo. Muy profesionales.',
     attribute: 'Primera vez',
     image: 'assets/images/pets/rocco.png'
   },
@@ -45,7 +45,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Nieve',
     species: 'gato',
     dramaLevel: 8,
-    comment: 'Mi gata odia ir al veterinario, pero aqu\u00ed la trataron con mucho cuidado. Regresar\u00e9 seguro.',
+    comment: 'Mi gata odia ir al veterinario, pero aquí la trataron con mucho cuidado. Regresaré seguro.',
     attribute: 'Cliente nuevo',
     image: 'assets/images/pets/nieve.png'
   },
@@ -54,7 +54,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Thor',
     species: 'perro',
     dramaLevel: 6,
-    comment: 'El doctor Mateo es excelente. Le explic\u00f3 todo claramente y mi perro qued\u00f3 como nuevo.',
+    comment: 'El doctor Mateo es excelente. Le explicó todo claramente y mi perro quedó como nuevo.',
     attribute: 'Paciente frecuente',
     image: 'assets/images/pets/thor.png'
   }

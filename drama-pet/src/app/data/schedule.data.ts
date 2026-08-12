@@ -1,4 +1,4 @@
-// ARCHIVO DE DATOS MOCK - Horarios de Drama Pet
+﻿// ARCHIVO DE DATOS MOCK - Horarios de Drama Pet
 // Estos son datos ficticios para desarrollo y pruebas.
 // NO representan la disponibilidad real de la clinica.
 
@@ -56,7 +56,7 @@ export const SCHEDULE: DaySchedule[] = [
     ]
   },
   {
-    day: 'Mi\u00e9rcoles',
+    day: 'Miércoles',
     slots: [
       { time: '08:00', available: true },
       { time: '08:30', available: true },
@@ -119,7 +119,7 @@ export const SCHEDULE: DaySchedule[] = [
     ]
   },
   {
-    day: 'S\u00e1bado',
+    day: 'Sábado',
     slots: [
       { time: '09:00', available: true },
       { time: '09:30', available: true },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SectionHeadingComponent } from '../../../shared/section-heading/section-heading.component';
@@ -19,7 +19,7 @@ export class ContactPageComponent {
     email: 'contacto@dramapet.pe',
     hours: {
       weekdays: 'Lun - Vie: 08:00 - 20:00',
-      saturday: 'S\u00e1b: 09:00 - 18:00',
+      saturday: 'Sáb: 09:00 - 18:00',
       sunday: 'Dom: Emergencias'
     }
   };
