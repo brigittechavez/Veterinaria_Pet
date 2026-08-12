@@ -9,6 +9,7 @@ export interface Testimonial {
   dramaLevel: number;
   comment: string;
   attribute: string;
+  image: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -18,7 +19,8 @@ export const TESTIMONIALS: Testimonial[] = [
     species: 'perro',
     dramaLevel: 9,
     comment: 'Sobrevivio al banho. Apenas.',
-    attribute: 'Paciente frecuente'
+    attribute: 'Paciente frecuente',
+    image: 'assets/images/pets/milo.png'
   },
   {
     id: 'test-002',
@@ -26,7 +28,8 @@ export const TESTIMONIALS: Testimonial[] = [
     species: 'gato',
     dramaLevel: 10,
     comment: 'Grito como si la estuvieran matando por una vacuna. La doctora Valeria la calmo en 2 minutos.',
-    attribute: 'Paciente frecuente'
+    attribute: 'Paciente frecuente',
+    image: 'assets/images/pets/luna.png'
   },
   {
     id: 'test-003',
@@ -34,7 +37,8 @@ export const TESTIMONIALS: Testimonial[] = [
     species: 'perro',
     dramaLevel: 7,
     comment: 'Lloro un poco en la consulta pero despues quiso jugar con todo el equipo. Muy profesionales.',
-    attribute: 'Primera vez'
+    attribute: 'Primera vez',
+    image: 'assets/images/pets/rocco.png'
   },
   {
     id: 'test-004',
@@ -42,7 +46,8 @@ export const TESTIMONIALS: Testimonial[] = [
     species: 'gato',
     dramaLevel: 8,
     comment: 'Mi gata odia ir al veterinario, pero aqui la trataron con mucho cuidado. Regresare seguro.',
-    attribute: 'Cliente nuevo'
+    attribute: 'Cliente nuevo',
+    image: 'assets/images/pets/nieve.png'
   },
   {
     id: 'test-005',
@@ -50,6 +55,7 @@ export const TESTIMONIALS: Testimonial[] = [
     species: 'perro',
     dramaLevel: 6,
     comment: 'El doctor Mateo es excelente. Le explico todo claramente y mi perro quedo como nuevo.',
-    attribute: 'Paciente frecuente'
+    attribute: 'Paciente frecuente',
+    image: 'assets/images/pets/thor.png'
   }
 ];

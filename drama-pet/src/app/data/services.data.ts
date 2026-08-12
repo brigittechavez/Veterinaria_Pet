@@ -16,6 +16,7 @@ export interface Service {
   description: string;
   price: string | null;
   icon: string;
+  image: string;
   duration: string;
   adaptiveQuestions: AdaptiveQuestion[];
   hasBooking: boolean;
@@ -30,6 +31,7 @@ export const SERVICES: Service[] = [
     description: 'Evaluacion completa de salud para tu mascota. Incluye examen fisico, revision de antecedentes y recomendaciones personalizadas.',
     price: 'S/ 75',
     icon: 'stethoscope',
+    image: 'assets/images/services/consulta.png',
     duration: '30 min',
     hasBooking: true,
     actionLabel: 'Agendar cita',
@@ -63,6 +65,7 @@ export const SERVICES: Service[] = [
     description: 'Proteccion completa contra enfermedades comunes. Vacunas esquematicas y desparasitacion interna y externa.',
     price: 'Desde S/ 55',
     icon: 'syringe',
+    image: 'assets/images/services/vacunacion.png',
     duration: '20 min',
     hasBooking: true,
     actionLabel: 'Agendar cita',
@@ -97,6 +100,7 @@ export const SERVICES: Service[] = [
     description: 'Atencion inmediata para situaciones criticas. Nuestro equipo esta disponible para emergencias durante horario de atencion.',
     price: null,
     icon: 'alert-triangle',
+    image: 'assets/images/services/emergencias.png',
     duration: 'Inmediato',
     hasBooking: false,
     actionLabel: 'Llamar ahora',
@@ -130,6 +134,7 @@ export const SERVICES: Service[] = [
     description: 'Servicio de estetistica integral para tu mascota. Banho, corte, secado, limpieza de oidos y corte de uinas.',
     price: 'Desde S/ 65',
     icon: 'scissors',
+    image: 'assets/images/services/grooming.png',
     duration: '45-90 min',
     hasBooking: true,
     actionLabel: 'Agendar cita',
@@ -163,6 +168,7 @@ export const SERVICES: Service[] = [
     description: 'Asesoria nutricional personalizada. Dietas balanceadas, control de peso y planes alimenticios segun la necesidad de tu mascota.',
     price: 'S/ 90',
     icon: 'heart',
+    image: 'assets/images/services/nutricion.png',
     duration: '40 min',
     hasBooking: true,
     actionLabel: 'Agendar cita',

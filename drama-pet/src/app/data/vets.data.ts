@@ -18,7 +18,7 @@ export const VETS: Vet[] = [
     specialty: 'Medicina preventiva y bienestar',
     experience: '8 anios de experiencia',
     funFact: 'Tiene 3 gatos adoptados que se llaman Nube, Trueno y Rayo. Dice que son sus mejores criticos.',
-    photo: 'assets/images/vets/dra-valeria-torres.jpg'
+    photo: 'assets/images/vets/dra-valeria-torres.png'
   },
   {
     id: 'vet-mateo-rivas',
@@ -26,7 +26,7 @@ export const VETS: Vet[] = [
     specialty: 'Medicina general',
     experience: '12 anios de experiencia',
     funFact: 'Fue campeon regional de natacion en la universidad. Afirma que nada mejor que un buen banho para relajarse.',
-    photo: 'assets/images/vets/dr-mateo-rivas.jpg'
+    photo: 'assets/images/vets/dr-mateo-rivas.png'
   },
   {
     id: 'vet-camila-leon',
@@ -34,6 +34,6 @@ export const VETS: Vet[] = [
     specialty: 'Nutricion veterinaria',
     experience: '6 anios de experiencia',
     funFact: 'Estudio gastronomia antes de veterinaria. Puede preparar dietas caseras para mascotas con problemas digestivos.',
-    photo: 'assets/images/vets/dra-camila-leon.jpg'
+    photo: 'assets/images/vets/dra-camila-leon.png'
   }
 ];

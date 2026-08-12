@@ -1,7 +1,13 @@
 <article class="team-card">
   <div class="team-card__photo">
-    <div class="team-card__photo-shape"></div>
-    <span class="team-card__photo-initials">{{ vet.name.charAt(0) }}{{ vet.name.split(' ').pop()?.charAt(0) }}</span>
+    <img
+      class="team-card__photo-img"
+      [src]="vet.photo"
+      [alt]="vet.name + ' - ' + vet.specialty"
+      width="400"
+      height="500"
+      loading="lazy"
+    >
   </div>
 
   <div class="team-card__info">

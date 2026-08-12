@@ -29,9 +29,14 @@
         <div class="services-page__detail-inner" [class.services-page__detail-inner--emergency]="isEmergency()">
 
           <div class="services-page__detail-image">
-            <div class="services-page__detail-shape">
-              <app-icon [name]="selectedService().icon" [size]="64"></app-icon>
-            </div>
+            <img
+              class="services-page__detail-img"
+              [src]="selectedService().image"
+              [alt]="selectedService().name"
+              width="600"
+              height="450"
+              loading="lazy"
+            >
           </div>
 
           <div class="services-page__detail-content">

@@ -11,6 +11,14 @@
         *ngFor="let testimonial of testimonials; let i = index"
         [style.--accent]="getAccentColor(i)"
       >
+        <img
+          class="testimonials__pet-image"
+          [src]="testimonial.image"
+          [alt]="testimonial.petName"
+          width="300"
+          height="300"
+          loading="lazy"
+        >
         <div class="testimonials__card-header">
           <span class="testimonials__species">{{ testimonial.species }}</span>
           <span class="testimonials__drama">Drama: {{ testimonial.dramaLevel }}/10</span>
