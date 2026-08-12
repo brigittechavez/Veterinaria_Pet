@@ -53,7 +53,7 @@ export class ReviewStepComponent {
     const [year, month, day] = dateStr.split('-').map(Number);
     const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const date = new Date(year, month - 1, day);
-    const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    const dayNames = ['Domingo', 'Lunes', 'Martes', 'Mi\u00e9rcoles', 'Jueves', 'Viernes', 'S\u00e1bado'];
     return `${dayNames[date.getDay()]} ${day} de ${months[date.getMonth()]} ${year}`;
   }
 

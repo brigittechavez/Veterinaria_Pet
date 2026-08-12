@@ -1,6 +1,6 @@
 <div class="questions-step">
   <div class="questions-step__header">
-    <h2 class="questions-step__title">Informacion adicional</h2>
+    <h2 class="questions-step__title">Informaci\u00f3n adicional</h2>
     <p class="questions-step__subtitle" *ngIf="selectedService">
       Responde estas preguntas para el servicio de {{ selectedService.name }}.
     </p>
@@ -44,7 +44,7 @@
             [id]="question.id"
             [formControlName]="question.id"
           >
-            <option value="" disabled>Selecciona una opcion</option>
+            <option value="" disabled>Selecciona una opci\u00f3n</option>
             <option *ngFor="let option of question.options" [value]="option">
               {{ option }}
             </option>

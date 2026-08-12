@@ -1,6 +1,6 @@
 [build]
   base = "drama-pet"
-  command = "npx ng build --configuration production"
+  command = "npx ng build --configuration=netlify"
   publish = "dist/drama-pet/browser"
 
 [[redirects]]

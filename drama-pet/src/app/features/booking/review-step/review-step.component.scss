@@ -155,4 +155,37 @@
     color: #e74c3c;
     min-height: 20px;
   }
+
+  &__actions {
+    margin-top: 28px;
+  }
+
+  &__confirm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background-color: var(--color-foreground);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-button);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--motion-default);
+    width: 100%;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      background-color: #000000;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }

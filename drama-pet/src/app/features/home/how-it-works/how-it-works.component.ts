@@ -14,7 +14,7 @@ export class HowItWorksComponent {
   steps = [
     {
       number: '01',
-      title: 'Elegi tu mascota',
+      title: 'Elige tu mascota',
       description: 'Selecciona el servicio que necesitas y completa el formulario adaptativo.',
       icon: 'dog'
     },
@@ -27,7 +27,7 @@ export class HowItWorksComponent {
     {
       number: '03',
       title: 'Nosotros nos encargamos',
-      description: 'Nuestro equipo de profesionales cuidara a tu mascota con amor.',
+      description: 'Nuestro equipo de profesionales cuidar\u00e1 a tu mascota con amor.',
       icon: 'heart'
     }
   ];

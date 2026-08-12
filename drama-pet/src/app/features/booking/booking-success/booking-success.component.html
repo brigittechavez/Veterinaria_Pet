@@ -40,6 +40,14 @@
         <span class="booking-success__summary-label">Hora</span>
         <span class="booking-success__summary-value">{{ selectedTime }}</span>
       </div>
+      <div class="booking-success__summary-row" *ngIf="ownerData">
+        <span class="booking-success__summary-label">Responsable</span>
+        <span class="booking-success__summary-value">{{ ownerData.nombre }}</span>
+      </div>
+      <div class="booking-success__summary-row" *ngIf="ownerData">
+        <span class="booking-success__summary-label">Contacto</span>
+        <span class="booking-success__summary-value">{{ ownerData.telefono }}</span>
+      </div>
     </div>
 
     <div class="booking-success__actions">

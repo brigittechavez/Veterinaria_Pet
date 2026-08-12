@@ -87,7 +87,7 @@
       </div>
 
       <div class="review-step__field">
-        <label class="review-step__label" for="owner-email">Correo electronico *</label>
+        <label class="review-step__label" for="owner-email">Correo electr\u00f3nico *</label>
         <input
           class="review-step__input"
           [class.review-step__input--error]="email?.invalid && email?.touched"
@@ -98,12 +98,12 @@
         />
         <span class="review-step__error" *ngIf="email?.invalid && email?.touched">
           <span *ngIf="email?.errors?.['required']">El correo es obligatorio.</span>
-          <span *ngIf="email?.errors?.['email']">Ingresa un correo electronico valido.</span>
+              <span *ngIf="email?.errors?.['email']">Ingresa un correo electr\u00f3nico v\u00e1lido.</span>
         </span>
       </div>
 
       <div class="review-step__field">
-        <label class="review-step__label" for="owner-telefono">Telefono *</label>
+        <label class="review-step__label" for="owner-telefono">Tel\u00e9fono *</label>
         <input
           class="review-step__input"
           [class.review-step__input--error]="telefono?.invalid && telefono?.touched"
@@ -113,9 +113,24 @@
           placeholder="+51 999 888 777"
         />
         <span class="review-step__error" *ngIf="telefono?.invalid && telefono?.touched">
-          <span *ngIf="telefono?.errors?.['required']">El telefono es obligatorio.</span>
+              <span *ngIf="telefono?.errors?.['required']">El tel\u00e9fono es obligatorio.</span>
         </span>
       </div>
     </form>
+
+    <div class="review-step__actions">
+      <button
+        class="review-step__confirm-btn"
+        (click)="onConfirm()"
+        [disabled]="ownerForm.invalid"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        Confirmar reserva
+      </button>
+    </div>
   </div>
 </div>

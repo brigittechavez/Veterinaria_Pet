@@ -19,7 +19,7 @@ export class ContactPageComponent {
     email: 'contacto@dramapet.pe',
     hours: {
       weekdays: 'Lun - Vie: 08:00 - 20:00',
-      saturday: 'Sab: 09:00 - 18:00',
+      saturday: 'S\u00e1b: 09:00 - 18:00',
       sunday: 'Dom: Emergencias'
     }
   };

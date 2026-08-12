@@ -28,7 +28,7 @@ export const SERVICES: Service[] = [
   {
     id: 'consulta-general',
     name: 'Consulta General',
-    description: 'Evaluacion completa de salud para tu mascota. Incluye examen fisico, revision de antecedentes y recomendaciones personalizadas.',
+    description: 'Evaluaci\u00f3n completa de salud para tu mascota. Incluye examen f\u00edsico, revisi\u00f3n de antecedentes y recomendaciones personalizadas.',
     price: 'S/ 75',
     icon: 'stethoscope',
     image: 'assets/images/services/consulta.png',
@@ -39,7 +39,7 @@ export const SERVICES: Service[] = [
     adaptiveQuestions: [
       {
         id: 'motivo-consulta',
-        text: 'Cual es el motivo de la consulta?',
+        text: '\u00bfCu\u00e1l es el motivo de la consulta?',
         type: 'textarea',
         required: true
       },
@@ -47,14 +47,14 @@ export const SERVICES: Service[] = [
         id: 'edad-mascota',
         text: 'Edad de la mascota',
         type: 'select',
-        options: ['Menor de 1 anio', '1-3 anios', '3-7 anios', '7-10 anios', 'Mayor de 10 anios'],
+        options: ['Menor de 1 a\u00f1o', '1-3 a\u00f1os', '3-7 a\u00f1os', '7-10 a\u00f1os', 'Mayor de 10 a\u00f1os'],
         required: true
       },
       {
         id: 'esterilizado',
-        text: 'La mascota esta esterilizada?',
+        text: '\u00bfLa mascota est\u00e1 esterilizada?',
         type: 'radio',
-        options: ['Si', 'No', 'No estoy seguro'],
+        options: ['S\u00ed', 'No', 'No estoy seguro'],
         required: true
       }
     ]
@@ -62,7 +62,7 @@ export const SERVICES: Service[] = [
   {
     id: 'vacunacion-desparasitacion',
     name: 'Vacunacion y Desparasitacion',
-    description: 'Proteccion completa contra enfermedades comunes. Vacunas esquematicas y desparasitacion interna y externa.',
+    description: 'Protecci\u00f3n completa contra enfermedades comunes. Vacunas esquem\u00e1ticas y desparasitaci\u00f3n interna y externa.',
     price: 'Desde S/ 55',
     icon: 'syringe',
     image: 'assets/images/services/vacunacion.png',
@@ -73,23 +73,23 @@ export const SERVICES: Service[] = [
     adaptiveQuestions: [
       {
         id: 'tipo-vacuna',
-        text: 'Que tipo de vacuna necesita?',
+        text: '\u00bfQu\u00e9 tipo de vacuna necesita?',
         type: 'select',
-        options: ['Primera vez (cachorro)', 'Refuerzo anual', 'Vacuna antirrabica', 'No estoy seguro'],
+        options: ['Primera vez (cachorro)', 'Refuerzo anual', 'Vacuna antirr\u00e1bica', 'No estoy seguro'],
         required: true
       },
       {
         id: 'ultima-desparasitacion',
-        text: 'Cuando fue la ultima desparasitacion?',
+        text: '\u00bfCu\u00e1ndo fue la \u00faltima desparasitaci\u00f3n?',
         type: 'select',
-        options: ['Menos de 3 meses', '3-6 meses', 'Mas de 6 meses', 'Nunca he desparasitado'],
+        options: ['Menos de 3 meses', '3-6 meses', 'M\u00e1s de 6 meses', 'Nunca he desparasitado'],
         required: true
       },
       {
         id: 'reacciones-previas',
-        text: 'Ha tenido reacciones a vacunas anteriormente?',
+        text: '\u00bfHa tenido reacciones a vacunas anteriormente?',
         type: 'radio',
-        options: ['Si', 'No'],
+        options: ['S\u00ed', 'No'],
         required: true
       }
     ]
@@ -97,7 +97,7 @@ export const SERVICES: Service[] = [
   {
     id: 'emergencias',
     name: 'Emergencias',
-    description: 'Atencion inmediata para situaciones criticas. Nuestro equipo esta disponible para emergencias durante horario de atencion.',
+    description: 'Atenci\u00f3n inmediata para situaciones cr\u00edticas. Nuestro equipo est\u00e1 disponible para emergencias durante horario de atenci\u00f3n.',
     price: null,
     icon: 'alert-triangle',
     image: 'assets/images/services/emergencias.png',
@@ -108,21 +108,21 @@ export const SERVICES: Service[] = [
     adaptiveQuestions: [
       {
         id: 'tipo-emergencia',
-        text: 'Que tipo de emergencia presenta la mascota?',
+        text: '\u00bfQu\u00e9 tipo de emergencia presenta la mascota?',
         type: 'select',
-        options: ['Accidente', 'Dificultad respiratoria', 'Vomito o diarrea severa', 'Envenenamiento', 'Golpe o traumatismo', 'Otro'],
+        options: ['Accidente', 'Dificultad respiratoria', 'V\u00f3mito o diarrea severa', 'Envenenamiento', 'Golpe o traumatismo', 'Otro'],
         required: true
       },
       {
         id: 'tiempo-sintomas',
-        text: 'Desde cuando presenta los sintomas?',
+        text: '\u00bfDesde cu\u00e1ndo presenta los s\u00edntomas?',
         type: 'select',
-        options: ['Menos de 1 hora', '1-6 horas', '6-24 horas', 'Mas de 24 horas'],
+        options: ['Menos de 1 hora', '1-6 horas', '6-24 horas', 'M\u00e1s de 24 horas'],
         required: true
       },
       {
         id: 'estado-mascota',
-        text: 'Como describiria el estado actual de la mascota?',
+        text: '\u00bfC\u00f3mo describir\u00eda el estado actual de la mascota?',
         type: 'textarea',
         required: true
       }
@@ -131,7 +131,7 @@ export const SERVICES: Service[] = [
   {
     id: 'grooming',
     name: 'Grooming',
-    description: 'Servicio de estetistica integral para tu mascota. Banho, corte, secado, limpieza de oidos y corte de uinas.',
+    description: 'Servicio de est\u00e9tica integral para tu mascota. Ba\u00f1o, corte, secado, limpieza de o\u00eddos y corte de u\u00f1as.',
     price: 'Desde S/ 65',
     icon: 'scissors',
     image: 'assets/images/services/grooming.png',
@@ -142,21 +142,21 @@ export const SERVICES: Service[] = [
     adaptiveQuestions: [
       {
         id: 'tamano-mascota',
-        text: 'Tamano de la mascota',
+        text: 'Tama\u00f1o de la mascota',
         type: 'select',
-        options: ['Pequeno (hasta 10 kg)', 'Mediano (10-25 kg)', 'Grande (25-45 kg)', 'Gigante (mas de 45 kg)'],
+        options: ['Peque\u00f1o (hasta 10 kg)', 'Mediano (10-25 kg)', 'Grande (25-45 kg)', 'Gigante (m\u00e1s de 45 kg)'],
         required: true
       },
       {
         id: 'tipo-servicio',
-        text: 'Que servicio de grooming necesita?',
+        text: '\u00bfQu\u00e9 servicio de grooming necesita?',
         type: 'select',
-        options: ['Banho basico', 'Banho y corte', 'Paquete completo (banho, corte, uinas, oidos)', 'Solo uinas'],
+        options: ['Ba\u00f1o b\u00e1sico', 'Ba\u00f1o y corte', 'Paquete completo (ba\u00f1o, corte, u\u00f1as, o\u00eddos)', 'Solo u\u00f1as'],
         required: true
       },
       {
         id: 'condicion-piel',
-        text: 'Alguna condicion especial de piel o pelaje?',
+        text: '\u00bfAlguna condici\u00f3n especial de piel o pelaje?',
         type: 'textarea',
         required: false
       }
@@ -165,7 +165,7 @@ export const SERVICES: Service[] = [
   {
     id: 'nutricion',
     name: 'Nutricion',
-    description: 'Asesoria nutricional personalizada. Dietas balanceadas, control de peso y planes alimenticios segun la necesidad de tu mascota.',
+    description: 'Asesor\u00eda nutricional personalizada. Dietas balanceadas, control de peso y planes alimenticios seg\u00fan la necesidad de tu mascota.',
     price: 'S/ 90',
     icon: 'heart',
     image: 'assets/images/services/nutricion.png',
@@ -176,16 +176,16 @@ export const SERVICES: Service[] = [
     adaptiveQuestions: [
       {
         id: 'objetivo-nutricional',
-        text: 'Cual es el objetivo de la consulta nutricional?',
+        text: '\u00bfCu\u00e1l es el objetivo de la consulta nutricional?',
         type: 'select',
         options: ['Control de peso (bajar)', 'Control de peso (subir)', 'Dieta para cachorro', 'Dieta para adulto mayor', 'Problemas digestivos', 'Alergias alimentarias'],
         required: true
       },
       {
         id: 'alimentacion-actual',
-        text: 'Que tipo de alimento recibe actualmente?',
+        text: '\u00bfQu\u00e9 tipo de alimento recibe actualmente?',
         type: 'select',
-        options: ['Alimento seco premium', 'Alimento seco economico', 'Alimento humedo', 'Comida casera', 'Mixto (seco y humedo)', 'Otro'],
+        options: ['Alimento seco premium', 'Alimento seco econ\u00f3mico', 'Alimento h\u00famedo', 'Comida casera', 'Mixto (seco y h\u00famedo)', 'Otro'],
         required: true
       },
       {

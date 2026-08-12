@@ -56,7 +56,7 @@ export const SCHEDULE: DaySchedule[] = [
     ]
   },
   {
-    day: 'Miercoles',
+    day: 'Mi\u00e9rcoles',
     slots: [
       { time: '08:00', available: true },
       { time: '08:30', available: true },
@@ -119,7 +119,7 @@ export const SCHEDULE: DaySchedule[] = [
     ]
   },
   {
-    day: 'Sabado',
+    day: 'S\u00e1bado',
     slots: [
       { time: '09:00', available: true },
       { time: '09:30', available: true },

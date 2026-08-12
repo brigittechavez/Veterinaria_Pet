@@ -18,7 +18,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Milo',
     species: 'perro',
     dramaLevel: 9,
-    comment: 'Sobrevivio al banho. Apenas.',
+    comment: 'Sobrevivi\u00f3 al ba\u00f1o. Apenas.',
     attribute: 'Paciente frecuente',
     image: 'assets/images/pets/milo.png'
   },
@@ -27,7 +27,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Luna',
     species: 'gato',
     dramaLevel: 10,
-    comment: 'Grito como si la estuvieran matando por una vacuna. La doctora Valeria la calmo en 2 minutos.',
+    comment: 'Grit\u00f3 como si la estuvieran matando por una vacuna. La doctora Valeria la calm\u00f3 en 2 minutos.',
     attribute: 'Paciente frecuente',
     image: 'assets/images/pets/luna.png'
   },
@@ -36,7 +36,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Rocco',
     species: 'perro',
     dramaLevel: 7,
-    comment: 'Lloro un poco en la consulta pero despues quiso jugar con todo el equipo. Muy profesionales.',
+    comment: 'Llor\u00f3 un poco en la consulta pero despu\u00e9s quiso jugar con todo el equipo. Muy profesionales.',
     attribute: 'Primera vez',
     image: 'assets/images/pets/rocco.png'
   },
@@ -45,7 +45,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Nieve',
     species: 'gato',
     dramaLevel: 8,
-    comment: 'Mi gata odia ir al veterinario, pero aqui la trataron con mucho cuidado. Regresare seguro.',
+    comment: 'Mi gata odia ir al veterinario, pero aqu\u00ed la trataron con mucho cuidado. Regresar\u00e9 seguro.',
     attribute: 'Cliente nuevo',
     image: 'assets/images/pets/nieve.png'
   },
@@ -54,7 +54,7 @@ export const TESTIMONIALS: Testimonial[] = [
     petName: 'Thor',
     species: 'perro',
     dramaLevel: 6,
-    comment: 'El doctor Mateo es excelente. Le explico todo claramente y mi perro quedo como nuevo.',
+    comment: 'El doctor Mateo es excelente. Le explic\u00f3 todo claramente y mi perro qued\u00f3 como nuevo.',
     attribute: 'Paciente frecuente',
     image: 'assets/images/pets/thor.png'
   }

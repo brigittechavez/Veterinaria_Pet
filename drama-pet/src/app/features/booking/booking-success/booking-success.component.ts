@@ -18,12 +18,13 @@ export class BookingSuccessComponent {
   @Input() vet: Vet | null = null;
   @Input() selectedDate: string = '';
   @Input() selectedTime: string = '';
+  @Input() ownerData: { nombre: string; email: string; telefono: string } | null = null;
 
   formatDate(dateStr: string): string {
     if (!dateStr) return '';
     const [year, month, day] = dateStr.split('-').map(Number);
     const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-    const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    const dayNames = ['Domingo', 'Lunes', 'Martes', 'Mi\u00e9rcoles', 'Jueves', 'Viernes', 'S\u00e1bado'];
     const date = new Date(year, month - 1, day);
     return `${dayNames[date.getDay()]} ${day} de ${months[date.getMonth()]} ${year}`;
   }
