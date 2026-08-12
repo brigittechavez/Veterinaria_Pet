@@ -43,18 +43,36 @@ export class TestimonialsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   prev(): void {
     this.activeIndex.update(i => (i === 0 ? this.maxIndex() : i - 1));
+    this.scrollToActive();
   }
 
   next(): void {
     this.activeIndex.update(i => (i === this.maxIndex() ? 0 : i + 1));
+    this.scrollToActive();
   }
 
   goTo(index: number): void {
     this.activeIndex.set(index);
+    this.scrollToActive();
   }
 
   isActive(index: number): boolean {
     return index === this.activeIndex();
+  }
+
+  private scrollToActive(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const track = this.carouselTrack?.nativeElement;
+    if (!track) return;
+    const cards = track.querySelectorAll('.testimonials__card');
+    const activeCard = cards[this.activeIndex()];
+    if (activeCard) {
+      const cardLeft = (activeCard as HTMLElement).offsetLeft;
+      const cardWidth = (activeCard as HTMLElement).offsetWidth;
+      const trackWidth = track.offsetWidth;
+      const scrollLeft = cardLeft - (trackWidth / 2) + (cardWidth / 2);
+      track.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+    }
   }
 
   ngOnInit(): void {

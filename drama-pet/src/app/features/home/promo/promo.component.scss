@@ -2,9 +2,19 @@
   background-color: var(--color-foreground);
   padding: 100px 0;
   overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
 
   &__container {
     text-align: center;
+    width: 100%;
+    padding: 0 24px;
+    box-sizing: border-box;
+
+    @media (min-width: 768px) {
+      padding: 0;
+    }
   }
 
   &__content {
