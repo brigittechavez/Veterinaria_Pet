@@ -1,0 +1,67 @@
+<div class="booking-summary" [class.booking-summary--collapsed]="isCollapsed()">
+  <button class="booking-summary__toggle" (click)="toggleCollapse()" type="button">
+    <span class="booking-summary__toggle-text">Resumen</span>
+    <svg
+      class="booking-summary__toggle-icon"
+      [class.booking-summary__toggle-icon--rotated]="isCollapsed()"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </button>
+
+  <div class="booking-summary__content" *ngIf="!isCollapsed()">
+    <h3 class="booking-summary__title">Tu reserva</h3>
+
+    <div class="booking-summary__items" *ngIf="hasAnyData()">
+      <div class="booking-summary__item" *ngIf="pet">
+        <span class="booking-summary__item-label">Mascota</span>
+        <span class="booking-summary__item-value">{{ pet.nombre }}</span>
+      </div>
+
+      <div class="booking-summary__item" *ngIf="service">
+        <span class="booking-summary__item-label">Servicio</span>
+        <span class="booking-summary__item-value">{{ service.name }}</span>
+      </div>
+
+      <div class="booking-summary__item" *ngIf="vet">
+        <span class="booking-summary__item-label">Veterinario</span>
+        <span class="booking-summary__item-value">{{ vet.name }}</span>
+      </div>
+
+      <div class="booking-summary__item" *ngIf="selectedDate">
+        <span class="booking-summary__item-label">Fecha</span>
+        <span class="booking-summary__item-value">{{ formatDate(selectedDate) }}</span>
+      </div>
+
+      <div class="booking-summary__item" *ngIf="selectedTime">
+        <span class="booking-summary__item-label">Hora</span>
+        <span class="booking-summary__item-value">{{ selectedTime }}</span>
+      </div>
+
+      <div class="booking-summary__item booking-summary__item--price" *ngIf="service">
+        <span class="booking-summary__item-label">Precio estimado</span>
+        <span class="booking-summary__item-price">{{ service.price }}</span>
+      </div>
+    </div>
+
+    <div class="booking-summary__empty" *ngIf="!hasAnyData()">
+      <p>Completa los pasos para ver el resumen de tu reserva.</p>
+    </div>
+
+    <div class="booking-summary__progress">
+      <div class="booking-summary__progress-bar">
+        <div class="booking-summary__progress-fill" [style.width.%]="(currentStep / 6) * 100"></div>
+      </div>
+      <span class="booking-summary__progress-text">Paso {{ currentStep }} de 6</span>
+    </div>
+  </div>
+</div>

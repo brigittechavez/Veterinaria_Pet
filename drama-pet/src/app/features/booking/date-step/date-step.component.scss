@@ -1,0 +1,174 @@
+.date-step {
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0 0 8px;
+  }
+
+  &__subtitle {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__section {
+    margin-bottom: 28px;
+  }
+
+  &__section-title {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0 0 14px;
+    letter-spacing: 0.01em;
+  }
+
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 380px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 8px;
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+    font-family: inherit;
+    text-align: center;
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-muted);
+    }
+
+    &--selected {
+      border-color: var(--color-brand);
+      background-color: var(--color-brand);
+      box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.15);
+
+      .date-step__day-name,
+      .date-step__day-number,
+      .date-step__day-month {
+        color: var(--color-foreground);
+      }
+
+      &:hover {
+        border-color: var(--color-brand);
+      }
+    }
+
+    &--today {
+      border-color: var(--color-brand-dark);
+
+      .date-step__day-number {
+        color: var(--color-brand-dark);
+      }
+    }
+  }
+
+  &__day-name {
+    font-family: var(--font-ui);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__day-number {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    line-height: 1;
+  }
+
+  &__day-month {
+    font-family: var(--font-ui);
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+  }
+
+  &__time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+  }
+
+  &__time {
+    padding: 10px 8px;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-surface);
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+    text-align: center;
+
+    &:hover:not(:disabled):not(.date-step__time--unavailable) {
+      border-color: var(--color-muted);
+    }
+
+    &--selected {
+      border-color: var(--color-brand);
+      background-color: var(--color-brand);
+      box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.15);
+
+      &:hover {
+        border-color: var(--color-brand);
+      }
+    }
+
+    &--unavailable {
+      opacity: 0.35;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+  }
+
+  &__no-slots,
+  &__no-date {
+    text-align: center;
+    padding: 32px 20px;
+  }
+
+  &__no-date-icon {
+    color: var(--color-muted);
+    opacity: 0.4;
+    margin-bottom: 12px;
+  }
+
+  &__no-date-text,
+  &__no-slots p {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    margin: 0;
+  }
+}

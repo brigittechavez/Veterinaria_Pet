@@ -1,0 +1,61 @@
+<section class="team-page">
+  <div class="team-page__container container">
+
+    <div class="team-page__hero">
+      <h1 class="team-page__hero-title">Nuestra manada</h1>
+      <p class="team-page__hero-philosophy">{{ philosophy }}</p>
+    </div>
+
+    <div class="team-page__values">
+      <h2 class="team-page__values-title">Lo que nos define</h2>
+      <div class="team-page__values-grid">
+        <div
+          *ngFor="let value of values; let i = index"
+          class="team-page__value-card"
+        >
+          <div class="team-page__value-icon">
+            <app-icon [name]="value.icon" [size]="28"></app-icon>
+          </div>
+          <h3 class="team-page__value-name">{{ value.name }}</h3>
+          <p class="team-page__value-description">{{ value.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-page__team">
+      <h2 class="team-page__team-title">Nuestro equipo</h2>
+      <p class="team-page__team-subtitle">Profesionales que aman lo que hacen.</p>
+      <div class="team-page__team-grid">
+        <app-team-card
+          *ngFor="let vet of vets"
+          [vet]="vet"
+        ></app-team-card>
+      </div>
+    </div>
+
+    <div class="team-page__story">
+      <div class="team-page__story-content">
+        <h2 class="team-page__story-title">Nuestra historia</h2>
+        <p class="team-page__story-text">{{ story }}</p>
+        <p class="team-page__story-location">
+          <app-icon [name]="'location'" [size]="18"></app-icon>
+          {{ teamInfo.location }}
+        </p>
+      </div>
+      <div class="team-page__story-visual">
+        <div class="team-page__story-shape"></div>
+      </div>
+    </div>
+
+    <div class="team-page__cta">
+      <div class="team-page__cta-inner">
+        <h2 class="team-page__cta-title">{{ teamInfo.motto }}</h2>
+        <p class="team-page__cta-text">Queremos conocerte. Agenda una cita y descubre por que las familias de {{ teamInfo.location }} confian en nosotros.</p>
+        <app-button variant="primary" size="lg" routerLink="/reservar">
+          Reservar cita
+        </app-button>
+      </div>
+    </div>
+
+  </div>
+</section>

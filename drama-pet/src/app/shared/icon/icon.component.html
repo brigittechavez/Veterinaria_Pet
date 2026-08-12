@@ -1,0 +1,17 @@
+<svg
+  class="icon"
+  [attr.width]="size"
+  [attr.height]="size"
+  [attr.viewBox]="viewBox"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    *ngIf="iconPath"
+    [attr.d]="iconPath"
+    stroke="currentColor"
+    [attr.stroke-width]="strokeWidth"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

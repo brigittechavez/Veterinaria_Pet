@@ -1,0 +1,232 @@
+<div class="pet-step">
+  <div class="pet-step__header">
+    <h2 class="pet-step__title">Selecciona tu mascota</h2>
+    <p class="pet-step__subtitle">Elige una mascota existente o agrega una nueva.</p>
+  </div>
+
+  <div class="pet-step__list" *ngIf="pets().length > 0 && !showForm()">
+    <button
+      class="pet-step__card"
+      *ngFor="let pet of pets()"
+      [class.pet-step__card--selected]="selectedPetId === pet.id"
+      (click)="selectPet(pet)"
+      type="button"
+    >
+      <div class="pet-step__card-icon">
+        <app-icon [name]="getSpeciesIcon(pet.especie)" [size]="32"></app-icon>
+      </div>
+      <div class="pet-step__card-info">
+        <span class="pet-step__card-name">{{ pet.nombre }}</span>
+        <span class="pet-step__card-detail">{{ pet.raza || 'Sin raza definida' }}</span>
+        <span class="pet-step__card-detail">{{ formatAge(pet.edad) }}</span>
+      </div>
+      <div class="pet-step__card-actions">
+        <button
+          class="pet-step__edit-btn"
+          (click)="openForm(pet); $event.stopPropagation()"
+          type="button"
+          title="Editar mascota"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </button>
+        <button
+          class="pet-step__delete-btn"
+          (click)="confirmDelete(pet.id, $event)"
+          type="button"
+          title="Eliminar mascota"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="pet-step__selected-badge" *ngIf="selectedPetId === pet.id">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+    </button>
+  </div>
+
+  <div class="pet-step__empty" *ngIf="pets().length === 0 && !showForm()">
+    <div class="pet-step__empty-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 3 3.5 3 1.035 0 2.007-.458 2.5-.972V17c0 1.657-1.343 3-3 3s-3-1.343-3-3v-1c0-1.657 1.343-3 3-3h.5M14 5.172C14 3.782 15.577 2.679 17.5 3c2.823.47 4.113 6.006 4 7-.137 1.217-1.5 3-3.5 3-1.035 0-2.007-.458-2.5-.972V17c0 1.657-1.343 3 3 3s3-1.343 3-3v-1c0-1.657-1.343-3-3-3h-.5"/>
+      </svg>
+    </div>
+    <p class="pet-step__empty-text">No tienes mascotas registradas.</p>
+    <p class="pet-step__empty-sub">Agrega una mascota para continuar con la reserva.</p>
+  </div>
+
+  <button
+    class="pet-step__add-btn"
+    *ngIf="!showForm()"
+    (click)="openForm()"
+    type="button"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+    Agregar mascota
+  </button>
+
+  <div class="pet-step__form-overlay" *ngIf="showForm()" (click)="closeForm()">
+    <div class="pet-step__form" (click)="$event.stopPropagation()">
+      <div class="pet-step__form-header">
+        <h3 class="pet-step__form-title">{{ editPetId() ? 'Editar mascota' : 'Nueva mascota' }}</h3>
+        <button class="pet-step__form-close" (click)="closeForm()" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="pet-step__form-body">
+        <div class="pet-step__field">
+          <label class="pet-step__label">Nombre *</label>
+          <input
+            class="pet-step__input"
+            type="text"
+            [value]="formNombre()"
+            (input)="formNombre.set($any($event.target).value)"
+            placeholder="Nombre de la mascota"
+          />
+        </div>
+
+        <div class="pet-step__field">
+          <label class="pet-step__label">Especie *</label>
+          <div class="pet-step__radio-group">
+            <label class="pet-step__radio">
+              <input
+                type="radio"
+                name="especie"
+                value="perro"
+                [checked]="formEspecie() === 'perro'"
+                (change)="formEspecie.set('perro')"
+              />
+              <span class="pet-step__radio-label">
+                <app-icon name="dog" [size]="18"></app-icon>
+                Perro
+              </span>
+            </label>
+            <label class="pet-step__radio">
+              <input
+                type="radio"
+                name="especie"
+                value="gato"
+                [checked]="formEspecie() === 'gato'"
+                (change)="formEspecie.set('gato')"
+              />
+              <span class="pet-step__radio-label">
+                <app-icon name="cat" [size]="18"></app-icon>
+                Gato
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pet-step__field-row">
+          <div class="pet-step__field">
+            <label class="pet-step__label">Edad (anios)</label>
+            <input
+              class="pet-step__input"
+              type="number"
+              min="0"
+              max="30"
+              [value]="formEdad()"
+              (input)="formEdad.set($any($event.target).valueAsNumber || null)"
+              placeholder="Edad"
+            />
+          </div>
+          <div class="pet-step__field">
+            <label class="pet-step__label">Peso (kg)</label>
+            <input
+              class="pet-step__input"
+              type="number"
+              min="0"
+              max="100"
+              [value]="formPeso()"
+              (input)="formPeso.set($any($event.target).valueAsNumber || null)"
+              placeholder="Peso"
+            />
+          </div>
+        </div>
+
+        <div class="pet-step__field">
+          <label class="pet-step__label">Sexo</label>
+          <div class="pet-step__radio-group">
+            <label class="pet-step__radio">
+              <input
+                type="radio"
+                name="sexo"
+                value="macho"
+                [checked]="formSexo() === 'macho'"
+                (change)="formSexo.set('macho')"
+              />
+              <span class="pet-step__radio-label">Macho</span>
+            </label>
+            <label class="pet-step__radio">
+              <input
+                type="radio"
+                name="sexo"
+                value="hembra"
+                [checked]="formSexo() === 'hembra'"
+                (change)="formSexo.set('hembra')"
+              />
+              <span class="pet-step__radio-label">Hembra</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pet-step__field">
+          <label class="pet-step__label">Raza</label>
+          <input
+            class="pet-step__input"
+            type="text"
+            [value]="formRaza()"
+            (input)="formRaza.set($any($event.target).value)"
+            placeholder="Raza de la mascota"
+          />
+        </div>
+      </div>
+
+      <div class="pet-step__form-actions">
+        <button class="pet-step__cancel-btn" (click)="closeForm()" type="button">
+          Cancelar
+        </button>
+        <button
+          class="pet-step__save-btn"
+          (click)="savePet()"
+          [disabled]="!formNombre().trim()"
+          type="button"
+        >
+          {{ editPetId() ? 'Guardar cambios' : 'Agregar mascota' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pet-step__delete-overlay" *ngIf="showDeleteConfirm()" (click)="cancelDelete()">
+    <div class="pet-step__delete-dialog" (click)="$event.stopPropagation()">
+      <h4 class="pet-step__delete-title">Eliminar mascota</h4>
+      <p class="pet-step__delete-text">
+        Estas seguro que deseas eliminar esta mascota? Esta accion no se puede deshacer.
+      </p>
+      <div class="pet-step__delete-actions">
+        <button class="pet-step__cancel-btn" (click)="cancelDelete()" type="button">
+          Cancelar
+        </button>
+        <button class="pet-step__confirm-delete-btn" (click)="deletePet(showDeleteConfirm()!)" type="button">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

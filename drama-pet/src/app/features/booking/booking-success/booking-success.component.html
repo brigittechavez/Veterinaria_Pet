@@ -1,0 +1,80 @@
+<div class="booking-success">
+  <div class="booking-success__celebration">
+    <div class="booking-success__circle booking-success__circle--1"></div>
+    <div class="booking-success__circle booking-success__circle--2"></div>
+    <div class="booking-success__circle booking-success__circle--3"></div>
+  </div>
+
+  <div class="booking-success__content">
+    <div class="booking-success__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+    </div>
+
+    <h1 class="booking-success__headline">Drama resuelto.<br/>Cita reservada.</h1>
+
+    <p class="booking-success__message">
+      Tu cita ha sido registrada exitosamente. Recibirás un correo de confirmación con los detalles.
+    </p>
+
+    <div class="booking-success__summary">
+      <div class="booking-success__summary-row" *ngIf="pet">
+        <span class="booking-success__summary-label">Mascota</span>
+        <span class="booking-success__summary-value">{{ pet.nombre }}</span>
+      </div>
+      <div class="booking-success__summary-row" *ngIf="service">
+        <span class="booking-success__summary-label">Servicio</span>
+        <span class="booking-success__summary-value">{{ service.name }}</span>
+      </div>
+      <div class="booking-success__summary-row" *ngIf="vet">
+        <span class="booking-success__summary-label">Veterinario</span>
+        <span class="booking-success__summary-value">{{ vet.name }}</span>
+      </div>
+      <div class="booking-success__summary-row" *ngIf="selectedDate">
+        <span class="booking-success__summary-label">Fecha</span>
+        <span class="booking-success__summary-value">{{ formatDate(selectedDate) }}</span>
+      </div>
+      <div class="booking-success__summary-row" *ngIf="selectedTime">
+        <span class="booking-success__summary-label">Hora</span>
+        <span class="booking-success__summary-value">{{ selectedTime }}</span>
+      </div>
+    </div>
+
+    <div class="booking-success__actions">
+      <button class="booking-success__action booking-success__action--primary" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Agregar al calendario
+      </button>
+
+      <a class="booking-success__action" routerLink="/" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Volver al inicio
+      </a>
+
+      <a class="booking-success__action" routerLink="/" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 3 3.5 3 1.035 0 2.007-.458 2.5-.972V17c0 1.657-1.343 3-3 3s-3-1.343-3-3v-1c0-1.657 1.343-3 3-3h.5M14 5.172C14 3.782 15.577 2.679 17.5 3c2.823.47 4.113 6.006 4 7-.137 1.217-1.5 3-3.5 3-1.035 0-2.007-.458-2.5-.972V17c0 1.657-1.343 3 3 3s3-1.343 3-3v-1c0-1.657-1.343-3-3-3h-.5"/>
+        </svg>
+        Ver mis mascotas
+      </a>
+
+      <a class="booking-success__action" routerLink="/" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Hacer otra reserva
+      </a>
+    </div>
+  </div>
+</div>

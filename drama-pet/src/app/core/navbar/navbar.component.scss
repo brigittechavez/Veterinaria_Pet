@@ -1,0 +1,119 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--color-background, #F5F1E8);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+
+  &__logo {
+    text-decoration: none;
+    color: var(--color-foreground, #111111);
+  }
+
+  &__logo-text {
+    font-family: var(--font-display, 'Bricolage Grotesque'), sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  &__links {
+    display: none;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--color-foreground, #111111);
+    font-family: var(--font-ui, 'Inter'), sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-brand, #C7FF3D);
+      transition: width 0.2s ease;
+    }
+
+    &:hover {
+      color: var(--color-brand-dark, #a8d633);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__cta {
+    display: none;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-foreground, #111111);
+    color: var(--color-background, #F5F1E8);
+    text-decoration: none;
+    font-family: var(--font-ui, 'Inter'), sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    @media (min-width: 1024px) {
+      display: block;
+    }
+
+    &:hover {
+      background-color: #000000;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-foreground, #111111);
+    transition: color 0.2s ease;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+
+    &:hover {
+      color: var(--color-brand-dark, #a8d633);
+    }
+  }
+}

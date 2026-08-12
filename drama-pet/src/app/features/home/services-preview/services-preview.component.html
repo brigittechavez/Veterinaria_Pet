@@ -1,0 +1,46 @@
+<section class="services-preview">
+  <div class="services-preview__container container">
+    <app-section-heading
+      title="Nuestros servicios"
+      subtitle="Cuidamos a tu mascota con los mejores profesionales y servicios."
+    ></app-section-heading>
+
+    <div class="services-preview__content">
+      <div class="services-preview__list">
+        <button
+          *ngFor="let service of services"
+          class="services-preview__item"
+          [class.services-preview__item--active]="service.id === selectedServiceId()"
+          (click)="selectService(service.id)"
+        >
+          <app-icon [name]="service.icon" [size]="24"></app-icon>
+          <span class="services-preview__item-name">{{ service.name }}</span>
+        </button>
+      </div>
+
+      <div class="services-preview__detail">
+        <div class="services-preview__detail-icon">
+          <app-icon [name]="selectedService().icon" [size]="48"></app-icon>
+        </div>
+        <h3 class="services-preview__detail-name">{{ selectedService().name }}</h3>
+        <p class="services-preview__detail-description">{{ selectedService().description }}</p>
+        <div class="services-preview__detail-meta">
+          <span class="services-preview__detail-price" *ngIf="selectedService().price">
+            {{ selectedService().price }}
+          </span>
+          <span class="services-preview__detail-duration">
+            {{ selectedService().duration }}
+          </span>
+        </div>
+        <app-button
+          *ngIf="selectedService().hasBooking"
+          variant="primary"
+          size="sm"
+          [routerLink]="selectedService().actionType === 'book' ? '/reservar' : 'tel:+51999999999'"
+        >
+          {{ selectedService().actionLabel }}
+        </app-button>
+      </div>
+    </div>
+  </div>
+</section>

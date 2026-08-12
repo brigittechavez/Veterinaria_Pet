@@ -1,0 +1,47 @@
+<section class="faq-page">
+  <div class="faq-page__container container">
+    <app-section-heading
+      title="Preguntas frecuentes"
+      subtitle="Resolvemos las dudas mas comunes sobre nuestros servicios, citas y cuidados para tu mascota."
+    ></app-section-heading>
+
+    <div class="faq-page__filters">
+      <button
+        class="faq-page__filter-pill"
+        [class.faq-page__filter-pill--active]="selectedCategoryId() === null"
+        (click)="selectCategory(null)"
+        type="button"
+      >
+        Todas
+      </button>
+      <button
+        *ngFor="let category of categories"
+        class="faq-page__filter-pill"
+        [class.faq-page__filter-pill--active]="selectedCategoryId() === category.id"
+        (click)="selectCategory(category.id)"
+        type="button"
+      >
+        {{ category.name }}
+      </button>
+    </div>
+
+    <div class="faq-page__list">
+      <app-accordion
+        *ngFor="let item of filteredItems(); trackBy: trackById"
+        [question]="item.question"
+        [answer]="item.answer"
+        [isOpen]="isOpen(item.id)"
+        (toggle)="toggleItem(item.id)"
+      ></app-accordion>
+    </div>
+
+    <div class="faq-page__footer">
+      <p class="faq-page__footer-text">
+        No encontraste lo que buscabas?
+      </p>
+      <a class="faq-page__footer-link" routerLink="/contacto">
+        Contactanos directamente
+      </a>
+    </div>
+  </div>
+</section>

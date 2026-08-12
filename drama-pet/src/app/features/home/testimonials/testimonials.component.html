@@ -1,0 +1,24 @@
+<section class="testimonials">
+  <div class="testimonials__container container">
+    <app-section-heading
+      title="Testimonios"
+      subtitle="Lo que dicen los humanos de nuestros pacientes."
+    ></app-section-heading>
+
+    <div class="testimonials__grid">
+      <div
+        class="testimonials__card"
+        *ngFor="let testimonial of testimonials; let i = index"
+        [style.--accent]="getAccentColor(i)"
+      >
+        <div class="testimonials__card-header">
+          <span class="testimonials__species">{{ testimonial.species }}</span>
+          <span class="testimonials__drama">Drama: {{ testimonial.dramaLevel }}/10</span>
+        </div>
+        <h3 class="testimonials__pet-name">{{ testimonial.petName }}</h3>
+        <p class="testimonials__quote">"{{ testimonial.comment }}"</p>
+        <span class="testimonials__attribute">{{ testimonial.attribute }}</span>
+      </div>
+    </div>
+  </div>
+</section>

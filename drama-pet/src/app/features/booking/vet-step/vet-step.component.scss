@@ -1,0 +1,130 @@
+.vet-step {
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0 0 8px;
+  }
+
+  &__subtitle {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background-color: var(--color-surface);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+    text-align: left;
+    font-family: inherit;
+    position: relative;
+
+    &:hover {
+      border-color: var(--color-muted);
+      box-shadow: var(--shadow-soft);
+    }
+
+    &--selected {
+      border-color: var(--color-brand);
+      background-color: rgba(199, 255, 61, 0.06);
+      box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.15);
+
+      &:hover {
+        border-color: var(--color-brand);
+      }
+    }
+
+    &--any {
+      border-style: dashed;
+    }
+  }
+
+  &__card-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+
+    &--any {
+      background-color: var(--color-background);
+      border: 2px dashed var(--color-border);
+    }
+  }
+
+  &__card--selected &__card-avatar {
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
+
+  &__card-initials {
+    user-select: none;
+  }
+
+  &__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__card-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  &__card-specialty {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  &__card-experience {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    opacity: 0.7;
+  }
+
+  &__card-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-brand);
+    color: var(--color-foreground);
+    flex-shrink: 0;
+  }
+}

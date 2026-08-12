@@ -1,0 +1,107 @@
+<section class="contact-page">
+  <div class="contact-page__container container">
+    <app-section-heading
+      title="Contacto"
+      subtitle="Estamos aqui para ayudarte. Escribinos, llamanos o acercate a nuestra clinica."
+    ></app-section-heading>
+
+    <div class="contact-page__content">
+      <div class="contact-page__info">
+        <div class="contact-page__info-card">
+          <div class="contact-page__info-row">
+            <div class="contact-page__info-icon">
+              <app-icon name="location" [size]="20"></app-icon>
+            </div>
+            <div class="contact-page__info-details">
+              <span class="contact-page__info-label">Direccion</span>
+              <span class="contact-page__info-value">{{ contactInfo.address }}</span>
+            </div>
+          </div>
+
+          <div class="contact-page__info-row">
+            <div class="contact-page__info-icon">
+              <app-icon name="phone" [size]="20"></app-icon>
+            </div>
+            <div class="contact-page__info-details">
+              <span class="contact-page__info-label">Telefono</span>
+              <a class="contact-page__info-link" href="tel:+51999888777">{{ contactInfo.phone }}</a>
+            </div>
+          </div>
+
+          <div class="contact-page__info-row">
+            <div class="contact-page__info-icon">
+              <app-icon name="mail" [size]="20"></app-icon>
+            </div>
+            <div class="contact-page__info-details">
+              <span class="contact-page__info-label">Correo electronico</span>
+              <a class="contact-page__info-link" href="mailto:contacto@dramapet.pe">{{ contactInfo.email }}</a>
+            </div>
+          </div>
+
+          <div class="contact-page__info-row">
+            <div class="contact-page__info-icon">
+              <app-icon name="clock" [size]="20"></app-icon>
+            </div>
+            <div class="contact-page__info-details">
+              <span class="contact-page__info-label">Horarios</span>
+              <span class="contact-page__info-value">{{ contactInfo.hours.weekdays }}</span>
+              <span class="contact-page__info-value">{{ contactInfo.hours.saturday }}</span>
+              <span class="contact-page__info-value">{{ contactInfo.hours.sunday }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-page__map">
+          <div class="contact-page__map-placeholder">
+            <app-icon name="location" [size]="40"></app-icon>
+            <span class="contact-page__map-text">Av. Larco 345, Miraflores</span>
+          </div>
+        </div>
+
+        <div class="contact-page__social">
+          <span class="contact-page__social-label">Siguenos</span>
+          <div class="contact-page__social-links">
+            <a
+              *ngFor="let social of socialLinks"
+              class="contact-page__social-link"
+              [href]="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <app-icon [name]="social.icon" [size]="18"></app-icon>
+              <span>{{ social.name }}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-page__emergency">
+          <div class="contact-page__emergency-content">
+            <div class="contact-page__emergency-icon">
+              <app-icon name="alert-triangle" [size]="24"></app-icon>
+            </div>
+            <div class="contact-page__emergency-info">
+              <h4 class="contact-page__emergency-title">Emergencias</h4>
+              <p class="contact-page__emergency-text">
+                Las emergencias no requieren cita previa.
+              </p>
+              <a class="contact-page__emergency-button" href="tel:+51999888777">
+                <app-icon name="phone" [size]="18"></app-icon>
+                Llamar ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-page__form-wrapper">
+        <div class="contact-page__form-card">
+          <h3 class="contact-page__form-title">Envianos un mensaje</h3>
+          <p class="contact-page__form-subtitle">
+            Completa el formulario y te responderemos lo antes posible.
+          </p>
+          <app-contact-form (formSubmit)="onFormSubmit()"></app-contact-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,439 @@
+.pet-step {
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0 0 8px;
+  }
+
+  &__subtitle {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background-color: var(--color-surface);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+    position: relative;
+    text-align: left;
+    font-family: inherit;
+
+    &:hover {
+      border-color: var(--color-muted);
+      box-shadow: var(--shadow-soft);
+    }
+
+    &--selected {
+      border-color: var(--color-brand);
+      background-color: rgba(199, 255, 61, 0.06);
+      box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.15);
+    }
+  }
+
+  &__card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    flex-shrink: 0;
+  }
+
+  &__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__card-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  &__card-detail {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  &__card-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__edit-btn,
+  &__delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+
+    &:hover {
+      color: var(--color-foreground);
+      border-color: var(--color-foreground);
+    }
+  }
+
+  &__delete-btn:hover {
+    color: #e74c3c;
+    border-color: #e74c3c;
+  }
+
+  &__selected-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-brand);
+    color: var(--color-foreground);
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+  }
+
+  &__empty-icon {
+    color: var(--color-muted);
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+
+  &__empty-text {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0 0 8px;
+  }
+
+  &__empty-sub {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  &__add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-card);
+    background-color: transparent;
+    color: var(--color-muted);
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--motion-fast);
+    width: 100%;
+    justify-content: center;
+
+    &:hover {
+      border-color: var(--color-brand);
+      color: var(--color-foreground);
+      background-color: rgba(199, 255, 61, 0.06);
+    }
+  }
+
+  &__form-overlay,
+  &__delete-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 24px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  &__form {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease;
+  }
+
+  &__form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 0;
+  }
+
+  &__form-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  &__form-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background-color: transparent;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+
+    &:hover {
+      background-color: var(--color-background);
+      color: var(--color-foreground);
+    }
+  }
+
+  &__form-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  &__label {
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: 0.01em;
+  }
+
+  &__input {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    padding: 12px 14px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-small);
+    background-color: var(--color-surface);
+    color: var(--color-foreground);
+    transition: border-color var(--motion-fast), box-shadow var(--motion-fast);
+    width: 100%;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: var(--color-muted);
+      opacity: 0.6;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 3px rgba(199, 255, 61, 0.2);
+    }
+  }
+
+  &__radio-group {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    input:checked + .pet-step__radio-label {
+      border-color: var(--color-brand);
+      background-color: rgba(199, 255, 61, 0.06);
+    }
+  }
+
+  &__radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-small);
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    transition: all var(--motion-fast);
+  }
+
+  &__form-actions {
+    display: flex;
+    gap: 12px;
+    padding: 0 24px 24px;
+    justify-content: flex-end;
+  }
+
+  &__cancel-btn {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-button);
+    background-color: transparent;
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+
+    &:hover {
+      border-color: var(--color-foreground);
+    }
+  }
+
+  &__save-btn {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-button);
+    background-color: var(--color-brand);
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-brand-dark);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__delete-dialog {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease;
+  }
+
+  &__delete-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0 0 12px;
+  }
+
+  &__delete-text {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  &__delete-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  &__confirm-delete-btn {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-button);
+    background-color: #e74c3c;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all var(--motion-fast);
+
+    &:hover {
+      background-color: #c0392b;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

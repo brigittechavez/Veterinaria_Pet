@@ -1,0 +1,55 @@
+<div class="vet-step">
+  <div class="vet-step__header">
+    <h2 class="vet-step__title">Elige tu veterinario</h2>
+    <p class="vet-step__subtitle">Este paso es opcional. Puedes continuar sin seleccionar un veterinario.</p>
+  </div>
+
+  <div class="vet-step__list">
+    <button
+      class="vet-step__card vet-step__card--any"
+      [class.vet-step__card--selected]="selectedVetId === ''"
+      (click)="skipVet()"
+      type="button"
+    >
+      <div class="vet-step__card-avatar vet-step__card-avatar--any">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+          <path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      </div>
+      <div class="vet-step__card-info">
+        <span class="vet-step__card-name">Cualquiera disponible</span>
+        <span class="vet-step__card-specialty">El primer veterinario disponible</span>
+      </div>
+      <div class="vet-step__card-check" *ngIf="selectedVetId === ''">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+    </button>
+
+    <button
+      class="vet-step__card"
+      *ngFor="let vet of vets"
+      [class.vet-step__card--selected]="selectedVetId === vet.id"
+      (click)="selectVet(vet)"
+      type="button"
+    >
+      <div class="vet-step__card-avatar">
+        <span class="vet-step__card-initials">{{ getInitials(vet.name) }}</span>
+      </div>
+      <div class="vet-step__card-info">
+        <span class="vet-step__card-name">{{ vet.name }}</span>
+        <span class="vet-step__card-specialty">{{ vet.specialty }}</span>
+        <span class="vet-step__card-experience">{{ vet.experience }}</span>
+      </div>
+      <div class="vet-step__card-check" *ngIf="selectedVetId === vet.id">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>

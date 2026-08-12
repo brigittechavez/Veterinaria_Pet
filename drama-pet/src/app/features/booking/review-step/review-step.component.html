@@ -1,0 +1,121 @@
+<div class="review-step">
+  <div class="review-step__header">
+    <h2 class="review-step__title">Confirma tu reserva</h2>
+    <p class="review-step__subtitle">Revisa los detalles antes de confirmar.</p>
+  </div>
+
+  <div class="review-step__summary">
+    <div class="review-step__summary-item" *ngIf="pet">
+      <div class="review-step__summary-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 3 3.5 3 1.035 0 2.007-.458 2.5-.972V17c0 1.657-1.343 3-3 3s-3-1.343-3-3v-1c0-1.657 1.343-3 3-3h.5M14 5.172C14 3.782 15.577 2.679 17.5 3c2.823.47 4.113 6.006 4 7-.137 1.217-1.5 3-3.5 3-1.035 0-2.007-.458-2.5-.972V17c0 1.657-1.343 3 3 3s3-1.343 3-3v-1c0-1.657-1.343-3-3-3h-.5"/>
+        </svg>
+        Mascota
+      </div>
+      <div class="review-step__summary-value">
+        <span class="review-step__summary-main">{{ pet.nombre }}</span>
+        <span class="review-step__summary-sub">{{ pet.raza || 'Sin raza' }} / {{ pet.especie === 'perro' ? 'Perro' : 'Gato' }}</span>
+      </div>
+    </div>
+
+    <div class="review-step__summary-item" *ngIf="service">
+      <div class="review-step__summary-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.8 2.3A.3.3 0 105 2H4a2 2 0 00-2 2v5a6 6 0 006 6v0a6 6 0 006-6V4a2 2 0 00-2-2h-1a.2.2 0 10.3.3M8 15v1a6 6 0 006 6v0a6 6 0 006-6v-4M12 2a4 4 0 00-4 4v1a4 4 0 008 0V6a4 4 0 00-4-4z"/>
+        </svg>
+        Servicio
+      </div>
+      <div class="review-step__summary-value">
+        <span class="review-step__summary-main">{{ service.name }}</span>
+        <span class="review-step__summary-sub">{{ service.duration }}</span>
+      </div>
+    </div>
+
+    <div class="review-step__summary-item">
+      <div class="review-step__summary-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 100 8 4 4 0 000-8z"/>
+        </svg>
+        Veterinario
+      </div>
+      <div class="review-step__summary-value">
+        <span class="review-step__summary-main">{{ vet ? vet.name : 'Cualquiera disponible' }}</span>
+        <span class="review-step__summary-sub" *ngIf="vet">{{ vet.specialty }}</span>
+      </div>
+    </div>
+
+    <div class="review-step__summary-item">
+      <div class="review-step__summary-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Fecha y hora
+      </div>
+      <div class="review-step__summary-value">
+        <span class="review-step__summary-main">{{ formatDate(selectedDate) }}</span>
+        <span class="review-step__summary-sub">{{ selectedTime }}</span>
+      </div>
+    </div>
+
+    <div class="review-step__summary-item review-step__summary-item--price" *ngIf="service">
+      <div class="review-step__summary-label">Precio estimado</div>
+      <div class="review-step__summary-price">{{ service.price }}</div>
+    </div>
+  </div>
+
+  <div class="review-step__form-section">
+    <h3 class="review-step__form-title">Datos del responsable</h3>
+
+    <form class="review-step__form" [formGroup]="ownerForm" (ngModelChange)="onFormChange()" novalidate>
+      <div class="review-step__field">
+        <label class="review-step__label" for="owner-nombre">Nombre completo *</label>
+        <input
+          class="review-step__input"
+          [class.review-step__input--error]="nombre?.invalid && nombre?.touched"
+          type="text"
+          id="owner-nombre"
+          formControlName="nombre"
+          placeholder="Tu nombre completo"
+        />
+        <span class="review-step__error" *ngIf="nombre?.invalid && nombre?.touched">
+          <span *ngIf="nombre?.errors?.['required']">El nombre es obligatorio.</span>
+          <span *ngIf="nombre?.errors?.['minlength']">El nombre debe tener al menos 2 caracteres.</span>
+        </span>
+      </div>
+
+      <div class="review-step__field">
+        <label class="review-step__label" for="owner-email">Correo electronico *</label>
+        <input
+          class="review-step__input"
+          [class.review-step__input--error]="email?.invalid && email?.touched"
+          type="email"
+          id="owner-email"
+          formControlName="email"
+          placeholder="correo@ejemplo.com"
+        />
+        <span class="review-step__error" *ngIf="email?.invalid && email?.touched">
+          <span *ngIf="email?.errors?.['required']">El correo es obligatorio.</span>
+          <span *ngIf="email?.errors?.['email']">Ingresa un correo electronico valido.</span>
+        </span>
+      </div>
+
+      <div class="review-step__field">
+        <label class="review-step__label" for="owner-telefono">Telefono *</label>
+        <input
+          class="review-step__input"
+          [class.review-step__input--error]="telefono?.invalid && telefono?.touched"
+          type="tel"
+          id="owner-telefono"
+          formControlName="telefono"
+          placeholder="+51 999 888 777"
+        />
+        <span class="review-step__error" *ngIf="telefono?.invalid && telefono?.touched">
+          <span *ngIf="telefono?.errors?.['required']">El telefono es obligatorio.</span>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div
+  class="section-heading"
+  [class.section-heading--center]="align === 'center'"
+  [class.section-heading--dark]="dark"
+>
+  <h2 class="section-heading__title">{{ title }}</h2>
+  <p *ngIf="subtitle" class="section-heading__subtitle">{{ subtitle }}</p>
+</div>

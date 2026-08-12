@@ -1,0 +1,22 @@
+<section class="how-it-works">
+  <div class="how-it-works__container container">
+    <app-section-heading
+      title="Como funciona"
+      subtitle="Tres pasos simples para cuidar a tu mascota."
+    ></app-section-heading>
+
+    <div class="how-it-works__steps">
+      <div
+        class="how-it-works__step"
+        *ngFor="let step of steps; let i = index"
+      >
+        <div class="how-it-works__step-number">{{ step.number }}</div>
+        <div class="how-it-works__step-icon">
+          <app-icon [name]="step.icon" [size]="32"></app-icon>
+        </div>
+        <h3 class="how-it-works__step-title">{{ step.title }}</h3>
+        <p class="how-it-works__step-description">{{ step.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

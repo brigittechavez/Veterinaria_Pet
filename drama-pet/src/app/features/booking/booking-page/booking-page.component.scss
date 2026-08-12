@@ -1,0 +1,218 @@
+.booking-page {
+  min-height: 100vh;
+  padding: 24px 0 120px;
+
+  @media (min-width: 960px) {
+    padding: 40px 0 60px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+
+    @media (min-width: 960px) {
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+      align-items: start;
+    }
+  }
+
+  &__main {
+    min-width: 0;
+  }
+
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color var(--motion-fast);
+
+    &:hover {
+      color: var(--color-foreground);
+    }
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  &__steps {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: var(--radius-button);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all var(--motion-fast);
+    white-space: nowrap;
+    font-family: inherit;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &--active {
+      background-color: var(--color-brand);
+      color: var(--color-foreground);
+    }
+
+    &--completed {
+      background-color: rgba(199, 255, 61, 0.2);
+      color: var(--color-foreground);
+    }
+
+    &--future {
+      color: var(--color-muted);
+    }
+
+    &:not(:disabled):hover:not(.booking-page__step--active) {
+      background-color: rgba(199, 255, 61, 0.1);
+    }
+  }
+
+  &__step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    flex-shrink: 0;
+  }
+
+  &__step--active &__step-number {
+    background-color: var(--color-foreground);
+    color: var(--color-brand);
+  }
+
+  &__step--completed &__step-number {
+    background-color: var(--color-brand-dark);
+    color: var(--color-foreground);
+  }
+
+  &__step-label {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  &__content {
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 28px;
+    min-height: 400px;
+
+    @media (min-width: 768px) {
+      padding: 36px;
+    }
+  }
+
+  &__step-content {
+    animation: fadeIn 0.3s ease;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  &__nav-spacer {
+    flex: 1;
+  }
+
+  &__nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-button);
+    background-color: var(--color-surface);
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: all var(--motion-fast);
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-foreground);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &--next {
+      background-color: var(--color-brand);
+      border-color: var(--color-brand);
+      margin-left: auto;
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-brand-dark);
+        border-color: var(--color-brand-dark);
+      }
+    }
+  }
+
+  &__sidebar {
+    @media (max-width: 959px) {
+      display: none;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

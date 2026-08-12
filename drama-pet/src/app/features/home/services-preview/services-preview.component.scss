@@ -1,0 +1,117 @@
+.services-preview {
+  padding: 100px 0;
+  background-color: var(--color-background);
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 60px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--radius-card);
+    cursor: pointer;
+    transition: all var(--motion-default);
+    text-align: left;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    &--active {
+      background-color: var(--color-surface);
+      border-color: var(--color-brand);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 768px) {
+      &:hover {
+        background-color: var(--color-surface);
+      }
+    }
+  }
+
+  &__item-name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  &__detail {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__detail-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-brand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__detail-name {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  &__detail-description {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  &__detail-meta {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__detail-price {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+
+  &__detail-duration {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    padding: 4px 12px;
+    background-color: var(--color-background);
+    border-radius: var(--radius-small);
+  }
+}

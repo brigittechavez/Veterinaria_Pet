@@ -1,0 +1,47 @@
+.promo {
+  background-color: var(--color-foreground);
+  padding: 100px 0;
+  overflow: hidden;
+
+  &__container {
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  &__badge {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    background-color: var(--color-brand);
+    padding: 6px 16px;
+    border-radius: var(--radius-button);
+  }
+
+  &__headline {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-surface);
+    margin: 0;
+  }
+
+  &__description {
+    font-family: var(--font-ui);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0;
+  }
+}

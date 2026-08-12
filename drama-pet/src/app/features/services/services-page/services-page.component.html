@@ -1,0 +1,100 @@
+<section class="services-page">
+  <div class="services-page__container container">
+    <app-section-heading
+      title="Nuestros servicios"
+      subtitle="Cada mascota merece una atencion que se adapta a lo que necesita. Sin vueltas, sin complicaciones."
+    ></app-section-heading>
+
+    <div class="services-page__content">
+      <div class="services-page__list">
+        <button
+          *ngFor="let service of services"
+          class="services-page__item"
+          [class.services-page__item--active]="service.id === selectedServiceId()"
+          [class.services-page__item--emergency]="service.id === 'emergencias'"
+          (click)="selectService(service.id)"
+        >
+          <div class="services-page__item-icon">
+            <app-icon [name]="service.icon" [size]="22"></app-icon>
+          </div>
+          <div class="services-page__item-info">
+            <span class="services-page__item-name">{{ service.name }}</span>
+            <span class="services-page__item-price" *ngIf="service.price">{{ service.price }}</span>
+            <span class="services-page__item-price services-page__item-price--urgent" *ngIf="!service.price">Inmediato</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="services-page__detail">
+        <div class="services-page__detail-inner" [class.services-page__detail-inner--emergency]="isEmergency()">
+
+          <div class="services-page__detail-image">
+            <div class="services-page__detail-shape">
+              <app-icon [name]="selectedService().icon" [size]="64"></app-icon>
+            </div>
+          </div>
+
+          <div class="services-page__detail-content">
+            <h3 class="services-page__detail-name">{{ selectedService().name }}</h3>
+
+            <div class="services-page__detail-meta">
+              <span class="services-page__detail-price" *ngIf="selectedService().price">{{ selectedService().price }}</span>
+              <span class="services-page__detail-duration">{{ selectedService().duration }}</span>
+            </div>
+
+            <p class="services-page__detail-description">{{ selectedService().description }}</p>
+
+            <div class="services-page__detail-questions" *ngIf="!isEmergency() && selectedService().adaptiveQuestions.length > 0">
+              <h4 class="services-page__questions-title">Preguntas para tu cita</h4>
+              <ul class="services-page__questions-list">
+                <li
+                  *ngFor="let question of selectedService().adaptiveQuestions"
+                  class="services-page__question-item"
+                >
+                  <span class="services-page__question-icon">
+                    <app-icon
+                      [name]="question.type === 'textarea' ? 'info' : question.type === 'radio' ? 'check' : 'chevron-right'"
+                      [size]="16"
+                    ></app-icon>
+                  </span>
+                  <span class="services-page__question-text">{{ question.text }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="services-page__emergency-info" *ngIf="isEmergency()">
+              <p class="services-page__emergency-message">
+                Las emergencias no requieren cita previa. Nuestro equipo esta disponible para atenderte de forma inmediata.
+              </p>
+              <div class="services-page__emergency-actions">
+                <a class="services-page__emergency-action services-page__emergency-action--call" href="tel:+51999999999">
+                  <app-icon [name]="'phone'" [size]="20"></app-icon>
+                  <span>Llamar ahora</span>
+                </a>
+                <a class="services-page__emergency-action services-page__emergency-action--whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer">
+                  <app-icon [name]="'message'" [size]="20"></app-icon>
+                  <span>Escribir por WhatsApp</span>
+                </a>
+                <a class="services-page__emergency-action services-page__emergency-action--location" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
+                  <app-icon [name]="'location'" [size]="20"></app-icon>
+                  <span>Ver ubicacion</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="services-page__detail-cta" *ngIf="!isEmergency()">
+              <app-button
+                variant="primary"
+                size="lg"
+                [routerLink]="selectedService().actionType === 'book' ? '/reservar' : 'tel:+51999999999'"
+              >
+                {{ selectedService().actionLabel }}
+              </app-button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

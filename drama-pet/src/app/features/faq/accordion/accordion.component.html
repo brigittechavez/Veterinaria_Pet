@@ -1,0 +1,32 @@
+<div class="accordion" [class.accordion--open]="isOpen">
+  <button
+    class="accordion__trigger"
+    (click)="onToggle()"
+    (keydown)="onKeydown($event)"
+    [attr.aria-expanded]="isOpen"
+    role="button"
+    type="button"
+  >
+    <span class="accordion__question">{{ question }}</span>
+    <span class="accordion__chevron">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </span>
+  </button>
+  <div class="accordion__content" [class.accordion__content--open]="isOpen">
+    <div class="accordion__answer">
+      <p>{{ answer }}</p>
+    </div>
+  </div>
+</div>

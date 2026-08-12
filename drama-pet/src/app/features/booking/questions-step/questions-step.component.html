@@ -1,0 +1,77 @@
+<div class="questions-step">
+  <div class="questions-step__header">
+    <h2 class="questions-step__title">Informacion adicional</h2>
+    <p class="questions-step__subtitle" *ngIf="selectedService">
+      Responde estas preguntas para el servicio de {{ selectedService.name }}.
+    </p>
+  </div>
+
+  <form class="questions-step__form" [formGroup]="questionsForm" *ngIf="selectedService">
+    <ng-container *ngFor="let question of selectedService.adaptiveQuestions">
+      <div class="questions-step__field">
+
+        <label class="questions-step__label" [for]="question.id">
+          {{ question.text }}
+          <span class="questions-step__required" *ngIf="question.required">*</span>
+        </label>
+
+        <div class="questions-step__control">
+
+          <input
+            *ngIf="question.type === 'text'"
+            class="questions-step__input"
+            [class.questions-step__input--error]="isFieldInvalid(question.id)"
+            [id]="question.id"
+            [formControlName]="question.id"
+            type="text"
+            placeholder="Ingresa tu respuesta"
+          />
+
+          <textarea
+            *ngIf="question.type === 'textarea'"
+            class="questions-step__textarea"
+            [class.questions-step__textarea--error]="isFieldInvalid(question.id)"
+            [id]="question.id"
+            [formControlName]="question.id"
+            rows="4"
+            placeholder="Describe brevemente"
+          ></textarea>
+
+          <select
+            *ngIf="question.type === 'select'"
+            class="questions-step__select"
+            [class.questions-step__select--error]="isFieldInvalid(question.id)"
+            [id]="question.id"
+            [formControlName]="question.id"
+          >
+            <option value="" disabled>Selecciona una opcion</option>
+            <option *ngFor="let option of question.options" [value]="option">
+              {{ option }}
+            </option>
+          </select>
+
+          <div class="questions-step__radio-group" *ngIf="question.type === 'radio'">
+            <label
+              class="questions-step__radio"
+              *ngFor="let option of question.options"
+            >
+              <input
+                type="radio"
+                [name]="question.id"
+                [value]="option"
+                [formControlName]="question.id"
+              />
+              <span class="questions-step__radio-label">{{ option }}</span>
+            </label>
+          </div>
+
+        </div>
+
+        <span class="questions-step__error" *ngIf="isFieldInvalid(question.id)">
+          {{ getFieldError(question.id) }}
+        </span>
+
+      </div>
+    </ng-container>
+  </form>
+</div>

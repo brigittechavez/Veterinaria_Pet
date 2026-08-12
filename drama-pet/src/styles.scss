@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --color-background: #F5F1E8;
+  --color-surface: #FFFFFF;
+  --color-foreground: #111111;
+  --color-brand: #C7FF3D;
+  --color-brand-dark: #a8d633;
+  --color-muted: #6B6B6B;
+  --color-border: #E0DCD3;
+  --color-surface-dark: #1A1A1A;
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+
+  --radius-card: 16px;
+  --radius-button: 999px;
+  --radius-small: 8px;
+
+  --shadow-soft: 0 2px 16px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.1);
+
+  --motion-fast: 150ms ease;
+  --motion-default: 300ms ease;
+  --motion-slow: 500ms ease;
+
+  --container-max: 1280px;
+  --container-padding: 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

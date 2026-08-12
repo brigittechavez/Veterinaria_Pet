@@ -1,0 +1,119 @@
+.testimonials {
+  padding: 100px 0;
+  background-color: var(--color-background);
+
+  &__grid {
+    display: flex;
+    gap: 24px;
+    margin-top: 60px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--color-border);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-muted);
+      border-radius: 3px;
+    }
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  &__card {
+    min-width: 280px;
+    max-width: 320px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--accent);
+    }
+
+    @media (min-width: 768px) {
+      min-width: auto;
+      max-width: none;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__species {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    background-color: var(--color-background);
+    padding: 4px 10px;
+    border-radius: var(--radius-small);
+  }
+
+  &__drama {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+
+  &__pet-name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__quote {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+    margin: 0;
+    font-style: italic;
+  }
+
+  &__attribute {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-brand-dark);
+    margin-top: auto;
+  }
+}

@@ -1,0 +1,35 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar__container">
+    <a routerLink="/" class="navbar__logo">
+      <span class="navbar__logo-text">DRAMA PET</span>
+    </a>
+
+    <ul class="navbar__links">
+      @for (link of navLinks; track link.route) {
+        <li>
+          <a [routerLink]="link.route" class="navbar__link">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+
+    <a routerLink="/reservar" class="navbar__cta">Reservar cita</a>
+
+    <button
+      class="navbar__hamburger"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+      aria-label="Abrir menu de navegacion"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<app-mobile-menu
+  [isOpen]="isMobileMenuOpen()"
+  (close)="closeMobileMenu()"
+></app-mobile-menu>

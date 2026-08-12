@@ -1,0 +1,56 @@
+<div class="service-step">
+  <div class="service-step__header">
+    <h2 class="service-step__title">Selecciona el servicio</h2>
+    <p class="service-step__subtitle">Elige el servicio que necesita tu mascota.</p>
+  </div>
+
+  <div class="service-step__list">
+    <button
+      class="service-step__card"
+      *ngFor="let service of services"
+      [class.service-step__card--selected]="selectedServiceId === service.id"
+      (click)="selectService(service)"
+      type="button"
+    >
+      <div class="service-step__card-icon">
+        <app-icon [name]="service.icon" [size]="28"></app-icon>
+      </div>
+      <div class="service-step__card-content">
+        <div class="service-step__card-top">
+          <span class="service-step__card-name">{{ service.name }}</span>
+          <span class="service-step__card-price">{{ service.price }}</span>
+        </div>
+        <p class="service-step__card-description">{{ service.description }}</p>
+        <div class="service-step__card-meta">
+          <span class="service-step__card-duration">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            {{ service.duration }}
+          </span>
+        </div>
+      </div>
+      <div class="service-step__card-check" *ngIf="selectedServiceId === service.id">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+    </button>
+  </div>
+
+  <div class="service-step__emergency-overlay" *ngIf="showEmergencyMessage()" (click)="dismissEmergencyMessage()">
+    <div class="service-step__emergency-dialog" (click)="$event.stopPropagation()">
+      <div class="service-step__emergency-icon">
+        <app-icon name="alert-triangle" [size]="32"></app-icon>
+      </div>
+      <h3 class="service-step__emergency-title">Emergencias</h3>
+      <p class="service-step__emergency-text">
+        Las emergencias no requieren reserva previa. Si tu mascota presenta una urgencia, por favor llamanos directamente al telefono de la clinica.
+      </p>
+      <button class="service-step__emergency-btn" (click)="dismissEmergencyMessage()" type="button">
+        Entendido
+      </button>
+    </div>
+  </div>
+</div>
